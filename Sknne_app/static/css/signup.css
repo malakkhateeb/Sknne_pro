@@ -1,0 +1,25 @@
+#first_name_error,
+#last_name_error {
+    color: red;
+    font-size: small;
+    margin-left: 15px;
+}
+
+#email_error,
+#password_error,
+#number_error {
+    color: red;
+    font-size: small;
+    margin-left: 15px;
+}
+
+#confirm_password_error {
+    font-size: small;
+    margin-left: 15px;
+}
+
+#signup_btn {
+    display: "none";
+}
+
+
