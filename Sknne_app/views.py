@@ -20,7 +20,6 @@ def signup(request):
         email = request.POST.get('email')
         errors = models.User.objects.signup_validator(request.POST)
         if models.User.objects.filter(email=email).exists():
-            # Render a template with a flag indicating email already exists
             return render(request, 'index.html', {'email_exists': True})
         if len(errors) > 0:
             for k , value in errors.items():
