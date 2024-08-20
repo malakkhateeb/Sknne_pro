@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
 
-<<<<<<< HEAD
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -209,20 +210,6 @@
 
             <h2 class="text-center pxp-section-h2">Why Choose Us</h2>
             <p class="pxp-text-light text-center">We offer perfect real estate services</p>
-=======
-            /* For Firefox */
-            input[type="number"] {
-                -moz-appearance: textfield;
-            }
-            .gradient-text {
-                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Adjust the direction and colors as needed */
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-        </style>
-    <title>Sknne</title>
-    </head>
->>>>>>> 2169507ad7c3841a246b954c0bcf2fc1691a5c5b
 
             <div class="container">
                 <div class="pxp-services-container rounded-lg mt-4 mt-md-5">
@@ -457,6 +444,23 @@
                 </div>
             </div>
         </div>
+        <div id="email-exists" data-exists="{{ email_exists|yesno:"true,false" }}" style="display: none;"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check for email exists flag
+                const emailExists = document.getElementById('email-exists').getAttribute('data-exists') === 'true';
+    
+                if (emailExists) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email already exists!',
+                        confirmButtonText: 'Try Again'
+                    });
+                }
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="/static/js/jquery-3.4.1.min.js"></script>
         <script src="/static/js/popper.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
