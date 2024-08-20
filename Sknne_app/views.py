@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 
 def logIn(request):
-    return render(request, 'index.html')
+    return render(request, 'city.html')
