@@ -1,13 +1,13 @@
 from django.shortcuts import render , redirect
-from . import models
 from django.contrib import messages 
+from .models import *
 
 def home(request):
     if 'id' not in request.session :
         return render(request, 'index.html')
     else:
         context = {
-            'user':models.show_user(id = request.session['id'])
+            'user':show_user(id = request.session['id'])
         }
         return render(request, 'city.html', context)
 
@@ -35,7 +35,7 @@ def signup(request):
                 messages.error(request , value)
             return redirect('/')
         else:
-            new_user = models.create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
+            new_user = create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
             request.session['id'] = new_user.id
             return redirect('/cities')
     else:
