@@ -6,5 +6,6 @@ urlpatterns = [
     path('front_validation' , views.front_validation),
     path('signup' , views.signup),
     path('login' , views.login),
-    path('city', views.city)
+    path('city', views.city),
+    path('logout',views.logout),
 ]

@@ -305,26 +305,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5 class="modal-title" id="pxpSigninModal">Welcome back!</h5>
-                    <form class="mt-4">
-                        <div class="form-group">
-                            <label for="pxp-signin-email">Email</label>
-                            <input type="text" class="form-control" id="pxp-signin-email" placeholder="Enter your email address">
-                        </div>
-                        <div class="form-group">
-                            <label for="pxp-signin-pass">Password</label>
-                            <input type="password" class="form-control" id="pxp-signin-pass" placeholder="Enter your password">
-                        </div>
-                        <div class="form-group">
-                            <a href="#" class="pxp-agent-contact-modal-btn">Sign In</a>
-                        </div>
-                        <div class="form-group mt-4 text-center pxp-modal-small">
-                            <a href="#" class="pxp-modal-link">Forgot password</a>
-                        </div>
-                        <div class="text-center pxp-modal-small">
-                            New to Resideo? <a href="javascript:void(0);" class="pxp-modal-link pxp-signup-trigger">Create an account</a>
-                        </div>
-                    </form>
+                    <div class="d-flex justify-content-between align-items-center my-2">
+                        <h1>Welcome, {{user.first_name}}</h1>
+                        <form action="/logout" method="post">
+                          {% csrf_token %}
+                            <input type="submit" value="Log Out" class="btn btn-sm btn-danger">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

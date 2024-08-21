@@ -341,22 +341,20 @@
                     </div>
                     <div class="modal-body">
                         <h5 class="modal-title" id="pxpSigninModal">Welcome back!</h5>
-                        <form class="mt-4">
+                        <form class="mt-4" action="/login" method="post">
+                            {% csrf_token %}
                             <div class="form-group">
                                 <label for="pxp-signin-email">Email</label>
                                 <input type="text" class="form-control" id="pxp-signin-email"
-                                    placeholder="Enter your email address">
+                                    placeholder="Enter your email address" name="email">
                             </div>
                             <div class="form-group">
                                 <label for="pxp-signin-pass">Password</label>
                                 <input type="password" class="form-control" id="pxp-signin-pass"
-                                    placeholder="Enter your password">
+                                    placeholder="Enter your password" name="password">
                             </div>
-                            <div class="form-group">
-                                <a href="#" class="pxp-agent-contact-modal-btn">Sign In</a>
-                            </div>
-                            <div class="form-group mt-4 text-center pxp-modal-small">
-                                <a href="#" class="pxp-modal-link">Forgot password</a>
+                            <div class="form-group" id="signup_btn">
+                                <button class="pxp-agent-contact-modal-btn" type="submit">LOG IN</button>
                             </div>
                             <div class="text-center pxp-modal-small">
                                 New to Resideo? <a href="javascript:void(0);"
