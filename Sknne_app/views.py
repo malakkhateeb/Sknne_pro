@@ -9,7 +9,7 @@ def logIn(request):
         context = {
             'user':models.show_user(id = request.session['id'])
         }
-        return render(request, 'index.html', context)
+        return render(request, 'city.html', context)
 
 def front_validation(request):
     return redirect('/')
