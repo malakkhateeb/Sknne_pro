@@ -150,6 +150,86 @@ $(document).ready(function () {
         }
     })
 });
+document.querySelector("#signupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    // Example AJAX call (using fetch API)
+    fetch('/signup', {
+        method: 'POST',
+        body: new FormData(this)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            // Show SweetAlert if there's an error
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: data.error_message,
+                confirmButtonText: 'Try Again'
+            });
+        } else {
+            // Redirect or show success message if signup is successful
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'You have been registered successfully!',
+                confirmButtonText: 'Proceed'
+            }).then(() => {
+                window.location.href = '/dashboard'; // Redirect to another page
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong!',
+            confirmButtonText: 'Try Again'
+        });
+    });
+});
+
+document.querySelector("#loginform").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Example AJAX call (using fetch API)
+    fetch('/login', {
+        method: 'POST',
+        body: new FormData(this)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            // Show SweetAlert if there's an error
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: data.error_message,
+                confirmButtonText: 'Try Again'
+            });
+        } else {
+            // Redirect or show success message if signup is successful
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'You have been registered successfully!',
+                confirmButtonText: 'Proceed'
+            }).then(() => {
+                window.location.href = '/dashboard'; // Redirect to another page
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong!',
+            confirmButtonText: 'Try Again'
+        });
+    });
+});
 /*$(document).ready(function () {
     $("#signup_form").on('input', function (event) {
         function getCSRFToken() {

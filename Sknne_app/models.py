@@ -21,17 +21,17 @@ class UserManager(models.Manager):
             errors['number'] = 'Number should be 10 characters starting with 05*****'
         return errors
     def login_validator(self , postData):
-        warnings = {}
-        if postData['email'] == '':
-            warnings['email'] = 'Email field cant be empty'
+        errors = {}
+        if postData['email'] == "":
+            errors['email'] = 'Email field cant be empty'
         elif postData['password'] == '':
-            warnings['password'] = 'Password field cant be empty'
+            errors['password'] = 'Password field cant be empty'
         elif User.objects.filter(email = postData['email']).exists() == False : 
-                warnings['email'] = "Email does not exist"
+                errors['email'] = "Email does not exist"
         else:
             if bcrypt.checkpw(postData['password'].encode(), view_user(email = postData['email']).password.encode()) == False :
-                warnings['password'] = 'Incorrect Email/Password'
-        return warnings
+                errors['password'] = 'Incorrect Email/Password'
+        return errors
 
 
 class User(models.Model):
