@@ -1,13 +1,13 @@
 from django.shortcuts import render , redirect
 from django.contrib import messages 
-from .models import *
+from . import models
 
 def home(request):
     if 'id' not in request.session :
         return render(request, 'index.html')
     else:
         context = {
-            'user':show_user(id = request.session['id'])
+            'user':models.show_user(id = request.session['id'])
         }
         return render(request, 'city.html', context)
 
@@ -35,7 +35,7 @@ def signup(request):
                 messages.error(request , value)
             return redirect('/')
         else:
-            new_user = create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
+            new_user = models.create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
             request.session['id'] = new_user.id
             return redirect('/cities')
     else:
@@ -45,6 +45,11 @@ def signup(request):
 def login(request):
     if request.method == 'POST':
         errors = models.User.objects.login_validator(request.POST)
+        email = request.POST.get('email')
+        if 'id' in request.session:
+            logged_in_user = models.User.objects.get(id=request.session['id'])
+            if logged_in_user.email == email:
+                return render(request, 'index.html', {'already_logged_in': True})
         if len(errors) > 0:
             for k , value in errors.items():
                 messages.warning(request , value)

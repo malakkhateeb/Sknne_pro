@@ -152,10 +152,6 @@ $(document).ready(function () {
 });
 document.querySelector("#signupForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent default form submission
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ccbd6affb4409731a3868ce573684dcbe61e7a9
     // Example AJAX call (using fetch API)
     fetch('/signup', {
         method: 'POST',

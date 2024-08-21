@@ -497,6 +497,19 @@
                     });
                 }
             });
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check for already logged in flag
+                const alreadyLoggedIn = document.getElementById('already-logged-in').getAttribute('data-logged-in') === 'true';
+    
+                if (alreadyLoggedIn) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Warning',
+                        text: 'This email is already logged in!',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="/static/js/jquery-3.4.1.min.js"></script>
