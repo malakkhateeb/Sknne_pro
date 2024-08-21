@@ -28,21 +28,36 @@ def signup(request):
         else:
             new_user = models.create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
             request.session['id'] = new_user.id
-            return redirect('/signup')
+            return redirect('/city')
     else:
         return redirect('/')
 
 
 def login(request):
     if request.method == 'POST':
-        warnings = models.User.objects.signup_validator(request.POST)
+        warnings = models.User.objects.login_validator(request.POST)
         if len(warnings) > 0:
-            for k , value in warnings.items():
-                messages.warning(request , value)
+            for k, value in warnings.items():
+                messages.warning(request, value)
             return redirect('/')
         else:
-            user = models.view_user(email = request.POST['email'])
-            request.session['id'] = user.id
-            return redirect('/login')
+            try:
+                user = models.view_user(email=request.POST['email'])
+                request.session['id'] = user.id
+                return redirect('/city')
+            except models.User.DoesNotExist:
+                messages.error(request, "Invalid login credentials")
+                return redirect('/')
+    else:
+        return redirect('/')    
+
+
+    
+    
+def city(request):
+    if 'id' in request.session:
+        user = models.show_user(request.session['id'])
+        context = {'user': user}
+        return render(request, 'city.html', context)
     else:
         return redirect('/')
