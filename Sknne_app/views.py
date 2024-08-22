@@ -1,13 +1,14 @@
 from django.shortcuts import render , redirect
 from django.contrib import messages 
-from .models import *
+from . import models
+
 
 def home(request):
     if 'id' not in request.session :
         return render(request, 'index.html')
     else:
         context = {
-            'user':show_user(id = request.session['id'])
+            'user':models.show_user(id = request.session['id'])
         }
         return render(request, 'city.html', context)
 
@@ -35,18 +36,17 @@ def signup(request):
                 messages.error(request , value)
             return redirect('/')
         else:
-            new_user = create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
-            request.session['id'] = new_user.id
-            return redirect('/cities')
+            models.create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
+            return redirect('/')
     else:
         return redirect('/')
 
 
 def login(request):
     if request.method == 'POST':
-        errors = models.User.objects.login_validator(request.POST)
-        if len(errors) > 0:
-            for k , value in errors.items():
+        warnings = models.User.objects.login_validator(request.POST)
+        if len(warnings) > 0:
+            for k , value in warnings.items():
                 messages.warning(request , value)
             return redirect('/')
         else:
@@ -55,3 +55,8 @@ def login(request):
             return redirect('/cities')
     else:
         return redirect('/')    
+
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')

@@ -3,6 +3,7 @@ import re
 import bcrypt
 from datetime import datetime
 
+
 class UserManager(models.Manager):
     def signup_validator(self , postData):
         errors = {}
@@ -21,17 +22,18 @@ class UserManager(models.Manager):
             errors['number'] = 'Number should be 10 characters starting with 05*****'
         return errors
     def login_validator(self , postData):
-        errors = {}
+        warnings = {}
         if postData['email'] == "":
-            errors['email'] = 'Email field cant be empty'
+            warnings['email'] = 'Email field cant be empty'
         elif postData['password'] == '':
-            errors['password'] = 'Password field cant be empty'
+            warnings['password'] = 'Password field cant be empty'
         elif User.objects.filter(email = postData['email']).exists() == False : 
-                errors['email'] = "Email does not exist"
+                warnings['email'] = "Email does not exist"
         else:
             if bcrypt.checkpw(postData['password'].encode(), view_user(email = postData['email']).password.encode()) == False :
-                errors['password'] = 'Incorrect Email/Password'
-        return errors
+                warnings['password'] = 'Incorrect Email/Password'
+        return warnings
+
 
 
 class User(models.Model):
@@ -42,12 +44,20 @@ class User(models.Model):
     phone_number = models.CharField(max_length=15)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     objects = UserManager()
+    def __str__(self):
+        return self.email
+
 
 class City(models.Model):
     name = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.name
+
 
 class Appartment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -57,28 +67,23 @@ class Appartment(models.Model):
     overview = models.TextField()
     price = models.IntegerField()
     room_count = models.IntegerField()
-    room_description = models.TextField()
     address = models.TextField()
     image = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return f"{self.title} in {self.city.name}"
+
 
 class Estimation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     appartment = models.ForeignKey(Appartment, on_delete=models.CASCADE)
     rating = models.IntegerField()
-    comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return f"Rating {self.rating} for {self.appartment.title}"
 
-class Chat(models.Model):
-    admin = models.ForeignKey(User, related_name='admin_chats', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='user_chats', on_delete=models.CASCADE)
-    subject = models.CharField(max_length=255)
-    content = models.TextField()
-    is_read = models.CharField(max_length=20)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 def view_user(email):
     return User.objects.get(email = email)
