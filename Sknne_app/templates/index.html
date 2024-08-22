@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -483,6 +482,7 @@
             </div>
         </div>
         <div id="email-exists" data-exists="{{ email_exists|yesno:"true,false" }}" style="display: none;"></div>
+        <div id="already-logged-in" data-logged-in="{{ already_logged_in|yesno:'true,false' }}" style="display: none;"></div>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Check for email exists flag
@@ -494,19 +494,6 @@
                         title: 'Oops...',
                         text: 'Email already exists!',
                         confirmButtonText: 'Try Again'
-                    });
-                }
-            });
-            document.addEventListener('DOMContentLoaded', function() {
-                // Check for already logged in flag
-                const alreadyLoggedIn = document.getElementById('already-logged-in').getAttribute('data-logged-in') === 'true';
-    
-                if (alreadyLoggedIn) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Warning',
-                        text: 'This email is already logged in!',
-                        confirmButtonText: 'OK'
                     });
                 }
             });

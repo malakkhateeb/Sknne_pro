@@ -22,14 +22,15 @@ class UserManager(models.Manager):
         return errors
     def login_validator(self , postData):
         errors = {}
-        if postData['email'] == "":
+        user = User.objects.get(email=postData['email'])
+        if postData['email'] == '':
             errors['email'] = 'Email field cant be empty'
         elif postData['password'] == '':
             errors['password'] = 'Password field cant be empty'
-        elif User.objects.filter(email = postData['email']).exists() == False : 
+        elif User.objects.filter(email = user.email).exists() == False : 
                 errors['email'] = "Email does not exist"
         else:
-            if bcrypt.checkpw(postData['password'].encode(), view_user(email = postData['email']).password.encode()) == False :
+            if not bcrypt.checkpw(postData['password'].encode(), user.password.encode()):
                 errors['password'] = 'Incorrect Email/Password'
         return errors
 
