@@ -17,7 +17,7 @@ def cities(request):
         return redirect('/')
     else:
         context = {
-            'user':models.show_user(id = request.session['id'])
+            'user': models.show_user(id = request.session['id'])
         }
         return render(request, 'city.html', context)
 
