@@ -11,6 +11,10 @@ const confirm_password = document.getElementById('confirm_password')
 const confirm_password_error = document.getElementById('confirm_password_error')
 const number = document.getElementById('number')
 const number_error = document.getElementById('number_error')
+const login_email = document.getElementById('pxp-signin-email')
+const login_email_error = document.getElementById('login_email_error')
+const login_password = document.getElementById('pxp-signin-pass')
+const login_password_error = document.getElementById('login_password_error')
 const msg = document.getElementById('msg')
 /*signup_form.addEventListener('submit', (x) => {
     var email_check = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -71,6 +75,43 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
+    $("#login_form").on('submit', function (event) {
+        var email_check = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        function getCSRFToken() {
+            return $('meta[name="csrf-token"]').attr('content');
+        }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRFToken': getCSRFToken()
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '/front_validation',
+            data: {
+                login_email: $("#login_email").val(),
+                login_password: $('#login_password').val(),
+                csrfmiddlewaretoke: $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+        })
+        if (login_password.value == '' || login_password.value == null) {
+            event.preventDefault()
+            login_password_error.innerHTML = "Password Field Can not be Empty";
+        }
+        else {
+            login_password_error.innerHTML = null;
+        }
+        if (login_email.value == '' || login_email.value == null) {
+            event.preventDefault();
+            login_email_error.innerHTML = "Email field can not be empty"
+        }
+        else {
+            login_email_error.innerHTML = null;
+        }
+    })
+});
+
+$(document).ready(function () {
     $("#signup_form").on('input', function (event) {
         var email_check = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         function getCSRFToken() {
@@ -108,14 +149,14 @@ $(document).ready(function () {
         else {
             last_name_error.innerHTML = null;
         }
-        if (email.value == ''){
+        if (email.value == '') {
             email_error.innerHTML = null;
         }
         else if (email.value != '' && !email.value.match(email_check)) {
             event.preventDefault();
             email_error.innerHTML = "Valid Email is required";
         }
-        else{
+        else {
             email_error.innerHTML = null;
         }
         if (password.value.length != 0 && password.value.length < 8) {
@@ -138,59 +179,62 @@ $(document).ready(function () {
             event.preventDefault();
             number_error.innerHTML = "Enter a valid number starting with 05*****"
         }
-        else if (number.value.length == 10){
+        else if (number.value.length == 10) {
             number_error.innerHTML = null
         }
         console.log(number_error.innerHTML)
-        if(first_name.value != "" && last_name.value != "" && email.value != "" && password.value != "" && confirm_password.value != "" && number.value != "" && first_name_error.innerHTML == "" && last_name_error.innerHTML == "" && email_error.innerHTML == "" && password_error.innerHTML == "" && number_error.innerHTML == "" ){
+        if (first_name.value != "" && last_name.value != "" && email.value != "" && password.value != "" && confirm_password.value != "" && number.value != "" && first_name_error.innerHTML == "" && last_name_error.innerHTML == "" && email_error.innerHTML == "" && password_error.innerHTML == "" && number_error.innerHTML == "") {
             signup_btn.style.display = "block"
         }
-        else{
+        else {
             signup_btn.style.display = "none"
         }
     })
 });
-// document.querySelector("#signupForm").addEventListener("submit", function(event) {
-//     event.preventDefault(); // Prevent default form submission
-//     // Example AJAX call (using fetch API)
-//     fetch('/signup', {
-//         method: 'POST',
-//         body: new FormData(this)
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         if (data.error) {
-//             // Show SweetAlert if there's an error
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Oops...',
-//                 text: data.error_message,
-//                 confirmButtonText: 'Try Again'
-//             });
-//         } else {
-//             // Redirect or show success message if signup is successful
-//             Swal.fire({
-//                 icon: 'success',
-//                 title: 'Success!',
-//                 text: 'You have been registered successfully!',
-//                 confirmButtonText: 'Proceed'
-//             }).then(() => {
-//                 window.location.href = '/dashboard'; // Redirect to another page
-//             });
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error:', error);
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Error',
-//             text: 'Something went wrong!',
-//             confirmButtonText: 'Try Again'
-//         });
-//     });
-// });
 
-document.querySelector("#loginform").addEventListener("submit", function(event) {
+
+
+/*document.querySelector("#signupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    // Example AJAX call (using fetch API)
+    fetch('/signup', {
+        method: 'POST',
+        body: new FormData(this)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            // Show SweetAlert if there's an error
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: data.error_message,
+                confirmButtonText: 'Try Again'
+            });
+        } else {
+            // Redirect or show success message if signup is successful
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'You have been registered successfully!',
+                confirmButtonText: 'Proceed'
+            }).then(() => {
+                window.location.href = '/dashboard'; // Redirect to another page
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong!',
+            confirmButtonText: 'Try Again'
+        });
+    });
+});*/
+
+/*document.querySelector("#loginform").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent default form submission
 
     // Example AJAX call (using fetch API)
@@ -229,7 +273,7 @@ document.querySelector("#loginform").addEventListener("submit", function(event) 
             confirmButtonText: 'Try Again'
         });
     });
-});
+});*/
 /*$(document).ready(function () {
     $("#signup_form").on('input', function (event) {
         function getCSRFToken() {

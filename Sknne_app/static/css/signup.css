@@ -7,7 +7,7 @@
 
 #email_error,
 #password_error,
-#number_error {
+#number_error ,#login_password_error , #login_email_error{
     color: red;
     font-size: small;
     margin-left: 15px;

@@ -1,284 +1,526 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load static %}
-        <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <style>
-            #title{
-                font-size: 50px !important;
-            }
-            #h1{
-                font-size: 15px;
-            }
-                /* For Chrome, Safari, Edge, and Opera */
-            input[type="number"]::-webkit-inner-spin-button,
-            input[type="number"]::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
 
-            /* For Firefox */
-            input[type="number"] {
-                -moz-appearance: textfield;
-            }
-            .gradient-text {
-                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Adjust the direction and colors as needed */
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            
-        </style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        #title {
+            font-size: 50px !important;
+        }
+
+        #h1 {
+            font-size: 15px;
+        }
+
+        /* For Chrome, Safari, Edge, and Opera */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* For Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            /* Adjust the direction and colors as needed */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 
     <title>Sknne</title>
 
-    </head>
-    <body>
-        <div class="pxp-header fixed-top pxp-animate pxp-no-bg">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-5 col-md-2">
-                        <a href="index.html" class="pxp-logo text-decoration-none">Sknne</a>
-                    </div>
-                    <div class="col-2 col-md-8 text-center">
-                        <ul class="pxp-nav list-inline">
-                            <li class="list-inline-item">
-                                <a href="#">Home</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="index.html">Version 1</a></li>
-                                    <li><a href="index-2.html">Version 2</a></li>
-                                    <li><a href="index-3.html">Version 3</a></li>
-                                    <li><a href="index-4.html">Version 4</a></li>
-                                    <li><a href="index-5.html">Version 5</a></li>
-                                    <li><a href="index-6.html">Version 6</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Properties</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="properties.html">All Properties</a></li>
-                                    <li><a href="single-property.html">Single Property</a></li>
-                                    <li><a href="submit-property.html">Submit New Property</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Agents</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="agents.html">All Agents</a></li>
-                                    <li><a href="single-agent.html">Single Agent</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Blog</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="blog.html">All Blog Posts</a></li>
-                                    <li><a href="single-post.html">Single Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Themes</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="../light/single-property.html">Light</a></li>
-                                    <li><a href="../dark/single-property.html">Dark</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item pxp-is-last"><a href="contact.html">Contact Us</a></li>
-                            <li class="list-inline-item pxp-has-btns">
-                                <div class="pxp-user-btns">
-                                    <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
-                                    <a href="#" class="pxp-user-btns-login pxp-signin-trigger">Sign In</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-5 col-md-2 text-right">
-                        <a href="javascript:void(0);" class="pxp-header-nav-trigger"><span class="fa fa-bars"></span></a>
-                        <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span class="fa fa-user-o"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+</head>
 
-    </head>
-    <body>
-        <script>
-            "use strict";
-            
-            !function() {
-            var t = window.driftt = window.drift = window.driftt || [];
-            if (!t.init) {
-                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-                t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-                t.factory = function(e) {
-                return function() {
-                    var n = Array.prototype.slice.call(arguments);
-                    return n.unshift(e), t.push(n), t;
-                };
-                }, t.methods.forEach(function(e) {
-                t[e] = t.factory(e);
-                }), t.load = function(t) {
-                  var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-                o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-                var i = document.getElementsByTagName("script")[0];
-                i.parentNode.insertBefore(o, i);
-                };
-            }
-            }();
-            drift.SNIPPET_VERSION = '0.3.1';
-            drift.load('g6s3dpwhnudz');
-            </script>
-
-    <div class="pxp-content">
-        <div class="pxp-single-property-top pxp-content-wrapper mt-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-5">
-                        <h2 class="pxp-sp-top-title">Beautiful Appartment in Nablus</h2>
-                        <p class="pxp-sp-top-address pxp-text-light">Alnajah street, Alamal bulding</p>
-                    </div>
-                    <div class="col-sm-12 col-md-7">
-                        <div class="pxp-sp-top-btns mt-2 mt-md-0">
-                            <a href="#" class="pxp-sp-top-btn"><span class="fa fa-star"></span> Add Favourite</a>
-                            <div class="dropdown">
-                                <a class="pxp-sp-top-btn" href="#" role="button" id="dropdownMenuLink"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="fa fa-share-alt"></span> Share
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#"><span class="fa fa-facebook"></span> Facebook</a>
-                                    <a class="dropdown-item" href="#"><span class="fa fa-twitter"></span> Twitter</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix d-block d-xl-none"></div>
-                        <div class="pxp-sp-top-feat mt-3 mt-md-0">
-                            <div>2 <span>BD</span></div>
-                            <div>2 <span>BA</span></div>
-                            <div>120<span>SF</span></div>
-                        </div>
-                        <div class="pxp-sp-top-price mt-3 mt-md-0">100$</div>
-                    </div>
+<body>
+    <div class="pxp-header fixed-top pxp-animate pxp-no-bg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-5 col-md-2">
+                    <a href="index.html" class="pxp-logo text-decoration-none">Sknne</a>
                 </div>
-            </div>
-        </div>
-
-        <div class="pxp-single-property-gallery-container mt-4 mt-md-5">
-            <div class="pxp-single-property-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"
-                    class="pxp-sp-gallery-main-img">
-                    <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1280" class="pxp-cover"
-                        style="background-image: url('{% static 'images/prop-1-3-big.jpg' %}');"></a>
-                    <figcaption itemprop="caption description">Image caption</figcaption>
-                </figure>
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                    <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1459" class="pxp-cover"
-                        style="background-image:  url('{% static 'images/prop-2-3-big.jpg' %}');"></a>
-                    <figcaption itemprop="caption description">Image caption</figcaption>
-                </figure>
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                    <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x2560" class="pxp-cover"
-                        style="background-image: url('{% static 'images/prop-7-1-big (1).jpg' %}');"></a>
-                    <figcaption itemprop="caption description">Image caption</figcaption>
-                </figure>
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                    <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1280" class="pxp-cover"
-                        style="background-image:  url('{% static 'images/prop-7-3-gallery.jpg' %}');"></a>
-                    <figcaption itemprop="caption description">Image caption</figcaption>
-                </figure>
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                    <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1280" class="pxp-cover"
-                        style="background-image:  url('{% static 'images/prop-7-2-gallery.jpg' %}');"></a>
-                    <figcaption itemprop="caption description">Image caption</figcaption>
-                </figure>
-            </div>
-            <a href="#" class="pxp-sp-gallery-btn">View Photos</a>
-            <div class="clearfix"></div>
-        </div>
-    </div> 
-
-    <div class="container mt-100">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="pxp-single-property-section">
-                    <h3>Appartment Details</h3>
-                    <div class="row mt-3 mt-md-4">
-                        <div class="col-sm-6">
-                            <div class="pxp-sp-key-details-item">
-                                <div class="pxp-sp-kd-item-label text-uppercase">Status</div>
-                                <div class="pxp-sp-kd-item-value">Available</div>
+                <div class="col-2 col-md-8 text-center">
+                    <ul class="pxp-nav list-inline">
+                        <li class="list-inline-item">
+                            <a href="#">Home</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="index.html">Version 1</a></li>
+                                <li><a href="index-2.html">Version 2</a></li>
+                                <li><a href="index-3.html">Version 3</a></li>
+                                <li><a href="index-4.html">Version 4</a></li>
+                                <li><a href="index-5.html">Version 5</a></li>
+                                <li><a href="index-6.html">Version 6</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Properties</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="properties.html">All Properties</a></li>
+                                <li><a href="single-property.html">Single Property</a></li>
+                                <li><a href="submit-property.html">Submit New Property</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Agents</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="agents.html">All Agents</a></li>
+                                <li><a href="single-agent.html">Single Agent</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Blog</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="blog.html">All Blog Posts</a></li>
+                                <li><a href="single-post.html">Single Blog Post</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Themes</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="../light/single-property.html">Light</a></li>
+                                <li><a href="../dark/single-property.html">Dark</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item pxp-is-last"><a href="contact.html">Contact Us</a></li>
+                        <li class="list-inline-item pxp-has-btns">
+                            <div class="pxp-user-btns">
+                                <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
+                                <a href="#" class="pxp-user-btns-login pxp-signin-trigger">Sign In</a>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="pxp-sp-key-details-item">
-                                <div class="pxp-sp-kd-item-label text-uppercase">Property Type</div>
-                                <div class="pxp-sp-kd-item-value">Single Room</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="pxp-sp-key-details-item">
-                                <div class="pxp-sp-kd-item-label text-uppercase">Room Count</div>
-                                <div class="pxp-sp-kd-item-value">2</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="pxp-sp-key-details-item">
-                                <div class="pxp-sp-kd-item-label text-uppercase">Parking Spaces</div>
-                                <div class="pxp-sp-kd-item-value">1</div>
-                            </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="pxp-single-property-section mt-4 mt-md-5">
-                    <h3>Overview</h3>
-                    <div class="mt-3 mt-md-4">
-                        <p>Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space. The second bedroom is<span class="pxp-dots">...</span><span class="pxp-dots-more"> a corner room with double windows. The kitchen has fabulous space, new appliances, and a laundry area. Other features include rich herringbone floors, crown moldings and coffered ceilings throughout the apartment. 1049 5th Avenue is a classic pre-war building located across from Central Park, the reservoir and The Metropolitan Museum. Elegant lobby and 24 hours doorman. This is a pet-friendly building. 
-                        <br><br>
-                        Conveniently located close to several trendy fitness centers like Equinox, New York Sports Clubs & Crunch. Fine restaurants around the area, as well as top-ranked schools. 2% Flip tax paid by buyer to the condominium. Building just put an assessment for 18 months of approximately $500 per month.</span></p>
-                        <a href="#" class="pxp-sp-more text-uppercase"><span class="pxp-sp-more-1">Continue Reading <span class="fa fa-angle-down"></span></span><span class="pxp-sp-more-2">Show Less <span class="fa fa-angle-up"></span></span></a>
-                    </div>
-                </div>
-                <div class="pxp-single-property-section mt-4 mt-md-5">
-                    <h3>Explore the Area</h3>
-                    <div class="pxp-sp-pois-nav mt-3 mt-md-4">
-                        <div class="pxp-sp-pois-nav-transportation text-uppercase">Transportation</div>
-                        <div class="pxp-sp-pois-nav-restaurants text-uppercase">Restaurants</div>
-                        <div class="pxp-sp-pois-nav-shopping text-uppercase">Shopping</div>
-                        <div class="pxp-sp-pois-nav-cafes text-uppercase">Cafes & Bars</div>
-                        <div class="pxp-sp-pois-nav-arts text-uppercase">Arts & Entertainment</div>
-                        <div class="pxp-sp-pois-nav-fitness text-uppercase">Fitness</div>
-                    </div>
-                    <div id="pxp-sp-map" class="mt-3"></div>
-                </div>
-
-    
-            <div class="col-lg-4">
-                <div class="pxp-single-property-section pxp-sp-agent-section mt-4 mt-md-5 mt-lg-0">
-                    <h3>Listed By</h3>
-                    <div class="pxp-sp-agent mt-3 mt-md-4">
-                        <a href="single-agent.html" class="pxp-sp-agent-fig pxp-cover rounded-lg" style="background-image: url('{% static 'images/user-profile-icon-free-vector.jpg' %}'); background-position: top center"></a>
-                        <div class="pxp-sp-agent-info">
-                            <div class="pxp-sp-agent-info-name"><a href="single-agent.html">Erika Tillman</a></div>
-                            <div class="pxp-sp-agent-info-rating"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></div>
-                            <div class="pxp-sp-agent-info-email"><a href="mailto:erika.tillman@resideo.com">erika.tillman@resideo.com</a></div>
-                            <div class="pxp-sp-agent-info-phone"><span class="fa fa-phone"></span> (123) 456-7890</div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="pxp-sp-agent-btns mt-3 mt-md-4">
-                            <a href="#pxp-contact-agent" class="pxp-sp-agent-btn-main" data-toggle="modal" data-target="#pxp-contact-agent"><span class="fa fa-envelope-o"></span> Contact Agent</a>
-                            <a href="#pxp-contact-agent" class="pxp-sp-agent-btn" data-toggle="modal" data-target="#pxp-contact-agent"><span class="fa fa-calendar-check-o"></span> Request Tour</a>
-                        </div>
-                    </div>
+                <div class="col-5 col-md-2 text-right">
+                    <a href="javascript:void(0);" class="pxp-header-nav-trigger"><span class="fa fa-bars"></span></a>
+                    <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span
+                            class="fa fa-user-o"></span></a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-</body>
+
+
+    <body>
+        <script>
+            "use strict";
+
+            !function () {
+                var t = window.driftt = window.drift = window.driftt || [];
+                if (!t.init) {
+                    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                    t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                        t.factory = function (e) {
+                            return function () {
+                                var n = Array.prototype.slice.call(arguments);
+                                return n.unshift(e), t.push(n), t;
+                            };
+                        }, t.methods.forEach(function (e) {
+                            t[e] = t.factory(e);
+                        }), t.load = function (t) {
+                            var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                            o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                            var i = document.getElementsByTagName("script")[0];
+                            i.parentNode.insertBefore(o, i);
+                        };
+                }
+            }();
+            drift.SNIPPET_VERSION = '0.3.1';
+            drift.load('g6s3dpwhnudz');
+        </script>
+
+        <div class="pxp-content">
+            <div class="pxp-single-property-top pxp-content-wrapper mt-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <h2 class="pxp-sp-top-title">Beautiful Appartment in Nablus</h2>
+                            <p class="pxp-sp-top-address pxp-text-light">Alnajah street, Alamal bulding</p>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="pxp-sp-top-btns mt-2 mt-md-0">
+                                <a href="#" class="pxp-sp-top-btn"><span class="fa fa-star"></span> Add Favourite</a>
+                                <div class="dropdown">
+                                    <a class="pxp-sp-top-btn" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="fa fa-share-alt"></span> Share
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="#"><span class="fa fa-facebook"></span>
+                                            Facebook</a>
+                                        <a class="dropdown-item" href="#"><span class="fa fa-twitter"></span>
+                                            Twitter</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix d-block d-xl-none"></div>
+                            <div class="pxp-sp-top-feat mt-3 mt-md-0">
+                                <div>2 <span>BD</span></div>
+                                <div>2 <span>BA</span></div>
+                                <div>120<span>SF</span></div>
+                            </div>
+                            <div class="pxp-sp-top-price mt-3 mt-md-0">100$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pxp-single-property-gallery-container mt-4 mt-md-5">
+                <div class="pxp-single-property-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"
+                        class="pxp-sp-gallery-main-img">
+                        <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1280" class="pxp-cover"
+                            style="background-image: url('{% static 'images/prop-1-3-big.jpg' %}');"></a>
+                        <figcaption itemprop="caption description">Image caption</figcaption>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1459" class="pxp-cover"
+                            style="background-image:  url('{% static 'images/prop-2-3-big.jpg' %}');"></a>
+                        <figcaption itemprop="caption description">Image caption</figcaption>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x2560" class="pxp-cover"
+                            style="background-image: url('{% static 'images/prop-7-1-big (1).jpg' %}');"></a>
+                        <figcaption itemprop="caption description">Image caption</figcaption>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1280" class="pxp-cover"
+                            style="background-image:  url('{% static 'images/prop-7-3-gallery.jpg' %}');"></a>
+                        <figcaption itemprop="caption description">Image caption</figcaption>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="images/ph-big.jpg" itemprop="contentUrl" data-size="1920x1280" class="pxp-cover"
+                            style="background-image:  url('{% static 'images/prop-7-2-gallery.jpg' %}');"></a>
+                        <figcaption itemprop="caption description">Image caption</figcaption>
+                    </figure>
+                </div>
+                <a href="#" class="pxp-sp-gallery-btn">View Photos</a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="container mt-100">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="pxp-single-property-section">
+                        <h3>Appartment Details</h3>
+                        <div class="row mt-3 mt-md-4">
+                            <div class="col-sm-6">
+                                <div class="pxp-sp-key-details-item">
+                                    <div class="pxp-sp-kd-item-label text-uppercase">Status</div>
+                                    <div class="pxp-sp-kd-item-value">Available</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="pxp-sp-key-details-item">
+                                    <div class="pxp-sp-kd-item-label text-uppercase">Property Type</div>
+                                    <div class="pxp-sp-kd-item-value">Single Room</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="pxp-sp-key-details-item">
+                                    <div class="pxp-sp-kd-item-label text-uppercase">Room Count</div>
+                                    <div class="pxp-sp-kd-item-value">2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pxp-single-property-section mt-4 mt-md-5">
+                        <h3>Overview</h3>
+                        <div class="mt-3 mt-md-4">
+                            <p>Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6.
+                                The wide entry hall leads to a large living room with dining area. This expansive 2
+                                bedroom and 2 renovated marble bathroom apartment has great windows. Despite the
+                                interior views, the apartments Southern and Eastern exposures allow for lovely natural
+                                light to fill every room. The master suite is surrounded by handcrafted milkwork and
+                                features incredible walk-in closet and storage space. The second bedroom is<span
+                                    class="pxp-dots">...</span><span class="pxp-dots-more"> a corner room with double
+                                    windows. The kitchen has fabulous space, new appliances, and a laundry area. Other
+                                    features include rich herringbone floors, crown moldings and coffered ceilings
+                                    throughout the apartment. 1049 5th Avenue is a classic pre-war building located
+                                    across from Central Park, the reservoir and The Metropolitan Museum. Elegant lobby
+                                    and 24 hours doorman. This is a pet-friendly building.
+                                    <br><br>
+                                    Conveniently located close to several trendy fitness centers like Equinox, New York
+                                    Sports Clubs & Crunch. Fine restaurants around the area, as well as top-ranked
+                                    schools. 2% Flip tax paid by buyer to the condominium. Building just put an
+                                    assessment for 18 months of approximately $500 per month.</span></p>
+                            <a href="#" class="pxp-sp-more text-uppercase"><span class="pxp-sp-more-1">Continue Reading
+                                    <span class="fa fa-angle-down"></span></span><span class="pxp-sp-more-2">Show Less
+                                    <span class="fa fa-angle-up"></span></span></a>
+                        </div>
+                    </div>
+
+                    <div class="pxp-single-property-section mt-4 mt-md-5">
+                        <h3 style="text-decoration: underline;">Explore the location</h3>
+                        <div class="pxp-sp-pois-nav mt-3 mt-md-4"></div>
+                        <div id="pxp-sp-map" class="mt-3"></div>
+                    </div>
+
+                    <div class="pxp-single-property-section mt-4 mt-md-5">
+                    </div>
+                    <div class="pxp-calculator-form mt-3 mt-md-4">
+                        <input type="hidden" id="pxp-calculator-form-property-taxes" value="$1,068">
+                        <input type="hidden" id="pxp-calculator-form-hoa-dues" value="$2,036">
+                    </div>
+                </div>
+
+                <div class="pxp-single-property-section mt-4 mt-md-5">
+                    <h3>Add your rating:</h3>
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane active" id="elementary" role="tabpanel">
+                            <table class="table table-responsive pxp-table">
+                                <tbody>
+                                    <tr>
+                                        <td>Rate</td>
+                                        <td>5/5<span class="pxp-school-rating"><span class="fa fa-star"></span><span
+                                                    class="fa fa-star"></span><span class="fa fa-star"></span><span
+                                                    class="fa fa-star"></span><span class="fa fa-star"></span></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pxp-single-property-section pxp-sp-agent-section mt-4 mt-md-5 mt-lg-0">
+                <h3 style="text-decoration: underline;">Ownered By</h3>
+                <div class="pxp-sp-agent mt-3 mt-md-4">
+                    <a href="single-agent.html" class="pxp-sp-agent-fig pxp-cover rounded-lg" style="background-image:  url('{% static 'images/user-profile-icon-free-vector.jpg' %}'); background-position: top center"></a>
+                    <div class="pxp-sp-agent-info">
+                        <div class="pxp-sp-agent-info-name"><a href="single-agent.html">Owner Name</a></div>
+                        
+                        <div class="pxp-sp-agent-info-email"><a href="mailto:erika.tillman@resideo.com">ownername@gmail.com</a></div>
+                        <div class="pxp-sp-agent-info-phone"><span class="fa fa-phone"></span>0597483190</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="pxp-sp-agent-btns mt-3 mt-md-4">
+                        <a href="#pxp-contact-agent" class="pxp-sp-agent-btn-main" data-toggle="modal" data-target="#pxp-contact-agent"><span class="fa fa-envelope-o"></span> Contact Agent</a>
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="pxp-footer pt-100 pb-100 mt-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-4">
+                    <div class="pxp-footer-logo">Sknne</div>
+                    <div class="pxp-footer-social mt-2">
+                        <a href="#"><span class="fa fa-instagram"></span></a>
+                        <a href="#"><span class="fa fa-facebook-square"></span></a>
+                        <a href="#"><span class="fa fa-twitter"></span></a>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-8">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <h4 class="pxp-footer-header mt-4 mt-lg-0">Company</h4>
+                            <ul class="list-unstyled pxp-footer-links mt-2">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Agents</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Demos</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <h4 class="pxp-footer-header mt-4 mt-lg-0">Actions</h4>
+                            <ul class="list-unstyled pxp-footer-links mt-2">
+                                <li><a href="#">Buy Properties</a></li>
+                                <li><a href="#">Rent Properties</a></li>
+                                <li><a href="#">Sell Properties</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <h4 class="pxp-footer-header mt-4 mt-lg-0">Explore</h4>
+                            <ul class="list-unstyled pxp-footer-links mt-2">
+                                <li><a href="#">Homes for Rent</a></li>
+                                <li><a href="#">Apartments for Rent</a></li>
+                                <li><a href="#">Homes for Sale</a></li>
+                                <li><a href="#">Apartments for Sale</a></li>
+                                <li><a href="#">CRM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="modal fade" id="pxp-signin-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSigninModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title" id="pxpSigninModal">Welcome back!</h5>
+                    {%if messages%}
+                    <ul id="messages" class="messages">
+                        {% for message in messages %}
+                        {% if 'warning' in message.tags %}
+                        <li {% if message.tags %} id="msg" class="{{ message.tags}}" {% endif %}>{{message}}</li>
+                        {%endif%}
+                        {%endfor%}
+                    </ul>
+                    {%endif%}
+                    <form id="login_form" class="mt-4" action="/login"  method="post">
+                        {%csrf_token%}
+                        <div class="form-group">
+                            <label for="pxp-signin-email">Email</label>
+                            <input type="text" name="email" class="form-control" id="pxp-signin-email"
+                                placeholder="Enter your email address">
+                            <span id="login_email_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pxp-signin-pass">Password</label>
+                            <input type="password" name="password" class="form-control" id="pxp-signin-pass"
+                                placeholder="Enter your password">
+                            <span id="login_password_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <button class="pxp-agent-contact-modal-btn" type="submit">SIGN IN</button>
+                        </div>
+                        <div class="form-group mt-4 text-center pxp-modal-small">
+                            <a href="password_reset/" class="pxp-modal-link">Forgot password</a>
+                        </div>
+                        <div class="text-center pxp-modal-small">
+                            New to Resideo? 
+                            <a href="javascript:void(0);" class="pxp-modal-link pxp-signup-trigger">Create an account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pxp-signup-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSignupModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title" id="pxpSignupModal">Create an account</h5>                        
+                    {%if messages%}
+                    <ul id="messages" class="messages">
+                        {% for message in messages %}
+                        {% if 'error' in message.tags %}
+                        <li {% if message.tags %} id="msg" class="{{ message.tags}}" {% endif %}>{{message}}</li>
+                        {%endif%}
+                        {%endfor%}
+                    </ul>
+                    {%endif%}
+                    <form action="/signup" class="mt-4" id="signup_form" method="post">
+                        {%csrf_token%}
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pxp-signup-firstname">First Name</label>
+                                    <input name="first_name" id="first_name" type="text" class="form-control"
+                                        id="pxp-signup-firstname" placeholder="Enter first name">
+                                    <span id="first_name_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pxp-signup-lastname">Last Name</label>
+                                    <input id="last_name" name="last_name" type="text" class="form-control"
+                                        id="pxp-signup-lastname" placeholder="Enter last name">
+                                    <span id="last_name_error"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pxp-signup-email">Email</label>
+                            <input id="email" type="text" name="email" class="form-control" id="pxp-signup-email"
+                                placeholder="Enter your email address">
+                            <span id="email_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pxp-signup-pass">Password</label>
+                            <input id="password" type="password" name="password" class="form-control"
+                                id="pxp-signup-pass" placeholder="Create a password">
+                            <span id="password_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pxp-signup-pass">Confirm Password</label>
+                            <input id="confirm_password" type="password" name="cpw" class="form-control"
+                                id="pxp-signup-pass" placeholder="Confirm password">
+                            <span id="confirm_password_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pxp-signup-pass">Number</label>
+                            <input id="number" type="number" class="form-control" name="number" id="pxp-signup-pass"
+                                placeholder="Enter Your Phone Number">
+                            <span id="number_error"></span>
+                        </div>
+                        <div class="form-group" id="signup_btn">
+                            <button class="pxp-agent-contact-modal-btn" type="submit">SIGN UP</button>
+                        </div>
+                        <div class="text-center mt-4 pxp-modal-small">
+                            Already have an account? <a href="javascript:void(0);"
+                                class="pxp-modal-link pxp-signin-trigger">Sign in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="email-exists" data-exists="{{ email_exists|yesno:"true,false" }}" style="display: none;"></div>
+    <div id="already-logged-in" data-logged-in="{{ already_logged_in|yesno:'true,false' }}" style="display: none;"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for email exists flag
+            const emailExists = document.getElementById('email-exists').getAttribute('data-exists') === 'true';
+
+            if (emailExists) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Email already exists!',
+                    confirmButtonText: 'Try Again'
+                });
+            }
+        });
+    </script>
+
+
+</html>
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_KEY_HERE&libraries=geometry,places"></script>
+        <script src="{% static 'js/photoswipe.min.js' %}"></script>
+        <script src="{% static 'js/photoswipe-ui-default.min.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/gallery.js' %}"></script>
+        <script src="{% static 'js/infobox.js' %}"></script>
+        <script src="{% static 'js/single-map.js' %}"></script>
+        <script src="{% static 'js/Chart.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+    </body>
+
+</html>
