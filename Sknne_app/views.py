@@ -36,8 +36,9 @@ def signup(request):
                 messages.error(request , value)
             return redirect('/')
         else:
-            models.create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
-            return redirect('/')
+            createdUser = models.create_user(first_name = request.POST['first_name'] , last_name = request.POST['last_name'] , email = request.POST['email'] , password = request.POST['password'] , phone_number = request.POST['number'])
+            request.session['id'] = createdUser.id
+            return redirect('/cities')
     else:
         return redirect('/')
 
