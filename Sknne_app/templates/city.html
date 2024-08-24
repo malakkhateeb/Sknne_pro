@@ -78,6 +78,14 @@
                         <ul class="pxp-nav list-inline">
                             <li class="list-inline-item">
                                 <a id="h1" href="#">Home</a>
+                                <ul class="pxp-nav-sub rounded-lg">
+                                    <li><a href="index.html">Version 1</a></li>
+                                    <li><a href="index-2.html">Version 2</a></li>
+                                    <li><a href="index-3.html">Version 3</a></li>
+                                    <li><a href="index-4.html">Version 4</a></li>
+                                    <li><a href="index-5.html">Version 5</a></li>
+                                    <li><a href="index-6.html">Version 6</a></li>
+                                </ul>
                             </li>
                             <li class="list-inline-item">
                                 <a id="h1" href="#">Properties</a>
@@ -325,12 +333,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="align-items-center my-2 text-center">
-                        <h2>Logout, {{user.first_name}}</h2>
-                        <p>After logging out of the system you will still be able to access dashbord</p>
+                    <div class="d-flex justify-content-between align-items-center my-2">
+                        <h1>Welcome, {{user.first_name}}</h1>
                         <form action="/logout" method="post">
-                        {% csrf_token %}
-                            <input type="submit" value="Log Out" name="logout" class="btn btn-sm btn-danger">
+                          {% csrf_token %}
+                            <input type="submit" value="Log Out" class="btn btn-sm btn-danger">
                         </form>
                     </div>
                 </div>

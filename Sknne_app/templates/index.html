@@ -78,12 +78,20 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-5 col-md-2">
-                    <a id="title" href="#" class="pxp-logo text-decoration-none ">Sknne</a>
+                    <a id="title" href="index.html" class="pxp-logo text-decoration-none ">Sknne</a>
                 </div>
                 <div class="col-2 col-md-8 text-center">
                     <ul class="pxp-nav list-inline">
                         <li class="list-inline-item">
                             <a id="h1" href="#">Home</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="index.html">Version 1</a></li>
+                                <li><a href="index-2.html">Version 2</a></li>
+                                <li><a href="index-3.html">Version 3</a></li>
+                                <li><a href="index-4.html">Version 4</a></li>
+                                <li><a href="index-5.html">Version 5</a></li>
+                                <li><a href="index-6.html">Version 6</a></li>
+                            </ul>
                         </li>
                         <li class="list-inline-item">
                             <a id="h1" href="#">Properties</a>
@@ -410,15 +418,6 @@
                     </div>
                     <div class="modal-body">
                         <h5 class="modal-title" id="pxpSignupModal">Create an account</h5>                        
-                        {%if messages%}
-                        <ul id="messages" class="messages">
-                            {% for message in messages %}
-                            {% if 'error' in message.tags %}
-                            <li {% if message.tags %} id="msg" class="{{ message.tags}}" {% endif %}>{{message}}</li>
-                            {%endif%}
-                            {%endfor%}
-                        </ul>
-                        {%endif%}
                         <form action="/signup" class="mt-4" id="signup_form" method="post">
                             {%csrf_token%}
                             <div class="row">

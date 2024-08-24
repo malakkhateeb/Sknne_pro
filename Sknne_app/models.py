@@ -68,12 +68,16 @@ class Appartment(models.Model):
     price = models.IntegerField()
     room_count = models.IntegerField()
     address = models.TextField()
-    image = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return f"{self.title} in {self.city.name}"
 
+class Image(models.Model):
+    appartment = models.ForeignKey(Appartment , related_name='images' , on_delete=models.CASCADE)
+    images = models.ImageField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Estimation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -94,3 +98,4 @@ def show_user(id):
 def create_user(first_name , last_name , email , password , phone_number):
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
     return User.objects.create(first_name = first_name , last_name = last_name , email = email ,password = pw_hash ,  phone_number = phone_number)
+
