@@ -46,6 +46,32 @@
 </head>
 
 <body>
+    <script>
+        "use strict";
+
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('g6s3dpwhnudz');
+    </script>
     <div class="pxp-header fixed-top pxp-animate pxp-no-bg">
         <div class="container">
             <div class="row align-items-center">
@@ -111,7 +137,469 @@
             </div>
         </div>
     </div>
+    <title>Sknne</title>
+    <div class="pxp-content">
+        <div class="pxp-hero vh-100">
+            <div class="pxp-hero-props-carousel-2">
+                <div class="carousel slide pxp-hero-props-carousel-2-left" data-ride="carousel" data-pause="false" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-slide="0" style="background-color: #D4AA32;">
+                            <div class="pxp-caption">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-10">
+                                        <div class="pxp-caption-prop-title">Chic Apartment in Nablus</div>
+                                    </div>
+                                </div>
+                                <div class="pxp-caption-prop-features mt-4">2 BD <span>|</span> 2 BA <span>|</span> 120 SF</div>
+                                <div class="pxp-caption-prop-price mt-5">$100</div>
+                            </div>
+                            <a href="single-property.html" class="pxp-cta text-uppercase pxp-animate">View Details</a>
+                        </div>
+                        <div class="carousel-item" data-slide="1" style="background-color: #64827C;">
+                            <div class="pxp-caption">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-10">
+                                        <div class="pxp-caption-prop-title">Colorful Little Apartment</div>
+                                    </div>
+                                </div>
+                                <div class="pxp-caption-prop-features mt-4">1 BD <span>|</span> 1 BA <span>|</span> 500 SF</div>
+                                <div class="pxp-caption-prop-price mt-5">$2,675</div>
+                            </div>
+                            <a href="single-property.html" class="pxp-cta text-uppercase pxp-animate">View Details</a>
+                        </div>
+                        <div class="carousel-item" data-slide="2" style="background-color: #687389;">
+                            <div class="pxp-caption">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-10">
+                                        <div class="pxp-caption-prop-title">Cozy Two Bedroom Apartment</div>
+                                    </div>
+                                </div>
+                                <div class="pxp-caption-prop-features mt-4">2 BD <span>|</span> 2 BA <span>|</span> 870 SF</div>
+                                <div class="pxp-caption-prop-price mt-5">$960,000</div>
+                            </div>
+                            <a href="single-property.html" class="pxp-cta text-uppercase pxp-animate">View Details</a>
+                        </div>
+                        <div class="carousel-item" data-slide="3" style="background-color: #CBB59E;">
+                            <div class="pxp-caption">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-10">
+                                        <div class="pxp-caption-prop-title">Modern Residence</div>
+                                    </div>
+                                </div>
+                                <div class="pxp-caption-prop-features mt-4">4 BD <span>|</span> 1.5 BA <span>|</span> 2,240 SF</div>
+                                <div class="pxp-caption-prop-price mt-5">$7,995</div>
+                            </div>
+                            <a href="single-property.html" class="pxp-cta text-uppercase pxp-animate">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="pxp-hero-props-carousel-2-right" class="carousel slide pxp-hero-props-carousel-2-right" data-ride="carousel" data-pause="false" data-interval="7000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-slide="0">
+                            <div class="pxp-hero-bg pxp-cover" style="background-image:url('{% static 'images/hero-prop-9.jpg' %}'); background-position: 0% 50%;"></div>
+                        </div>
+                        <div class="carousel-item" data-slide="1">
+                            <div class="pxp-hero-bg pxp-cover" style="background-image: url('{% static 'images/hero-prop-10.jpg' %}'); background-position: 50% 50%;"></div>
+                        </div>
+                        <div class="carousel-item" data-slide="2">
+                            <div class="pxp-hero-bg pxp-cover" style="background-image: url('{% static 'images/hero-prop-3.jpg' %}'); background-position: 50% 50%;"></div>
+                        </div>
+                        <div class="carousel-item" data-slide="3">
+                            <div class="pxp-hero-bg pxp-cover" style="background-image:url('{% static 'images/prop-1-3-big.jpg' %}'); background-position: 50% 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxp-carousel-controls">
+                    <a class="pxp-carousel-control-prev" role="button" data-slide="prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32.414" height="20.828" viewBox="0 0 32.414 20.828">
+                            <g id="Group_30" data-name="Group 30" transform="translate(-1845.086 -1586.086)">
+                                <line id="Line_2" data-name="Line 2" x1="30" transform="translate(1846.5 1596.5)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="2"/>
+                                <line id="Line_3" data-name="Line 3" x1="9" y2="9" transform="translate(1846.5 1587.5)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="2"/>
+                                <line id="Line_4" data-name="Line 4" x1="9" y1="9" transform="translate(1846.5 1596.5)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </a>
+                    <a class="pxp-carousel-control-next" role="button" data-slide="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32.414" height="20.828" viewBox="0 0 32.414 20.828">
+                            <g id="Symbol_1_1" data-name="Symbol 1 – 1" transform="translate(-1847.5 -1589.086)">
+                                <line id="Line_5" data-name="Line 2" x2="30" transform="translate(1848.5 1599.5)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="2"/>
+                                <line id="Line_6" data-name="Line 3" x2="9" y2="9" transform="translate(1869.5 1590.5)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="2"/>
+                                <line id="Line_7" data-name="Line 4" y1="9" x2="9" transform="translate(1869.5 1599.5)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+                <div class="pxp-carousel-ticker">
+                    <div class="pxp-carousel-ticker-counter"></div>
+                    <div class="pxp-carousel-ticker-divider">&nbsp;&nbsp;/&nbsp;&nbsp;</div>
+                    <div class="pxp-carousel-ticker-total"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mt-100">
+            <h2 class="pxp-section-h2">Latest Appartments</h2>
+            <p class="pxp-text-light">Browse our latest appartments</p>
 
-    </head>
+            <div class="row mt-4 mt-md-5">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a href="single-property.html" class="pxp-prop-card-1 rounded-lg mb-4">
+                        <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static 'images/hero-prop-9.jpg' %}');"></div>
+                        <div class="pxp-prop-card-1-gradient pxp-animate"></div>
+                        <div class="pxp-prop-card-1-details">
+                            <div class="pxp-prop-card-1-details-title">Chic Apartment in Downtown</div>
+                            <div class="pxp-prop-card-1-details-price">$890,000</div>
+                            <div class="pxp-prop-card-1-details-features text-uppercase">2 BD <span>|</span> 2 BA <span>|</span> 920 SF</div>
+                        </div>
+                        <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a href="single-property.html" class="pxp-prop-card-1 rounded-lg mb-4">
+                        <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static 'images/hero-prop-9.jpg' %}');"></div>
+                        <div class="pxp-prop-card-1-gradient pxp-animate"></div>
+                        <div class="pxp-prop-card-1-details">
+                            <div class="pxp-prop-card-1-details-title">Colorful Little Apartment</div>
+                            <div class="pxp-prop-card-1-details-price">$2,675</div>
+                            <div class="pxp-prop-card-1-details-features text-uppercase">1 BD <span>|</span> 1 BA <span>|</span> 500 SF</div>
+                        </div>
+                        <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a href="single-property.html" class="pxp-prop-card-1 rounded-lg mb-4">
+                        <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static 'images/hero-prop-9.jpg' %}');"></div>
+                        <div class="pxp-prop-card-1-gradient pxp-animate"></div>
+                        <div class="pxp-prop-card-1-details">
+                            <div class="pxp-prop-card-1-details-title">Cozy Two Bedroom Apartment</div>
+                            <div class="pxp-prop-card-1-details-price">$960,000</div>
+                            <div class="pxp-prop-card-1-details-features text-uppercase">2 BD <span>|</span> 2 BA <span>|</span> 870 SF</div>
+                        </div>
+                        <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a href="single-property.html" class="pxp-prop-card-1 rounded-lg mb-4">
+                        <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static 'images/hero-prop-9.jpg' %}');"></div>
+                        <div class="pxp-prop-card-1-gradient pxp-animate"></div>
+                        <div class="pxp-prop-card-1-details">
+                            <div class="pxp-prop-card-1-details-title">Beautiful House in Marina</div>
+                            <div class="pxp-prop-card-1-details-price">$5,198,000</div>
+                            <div class="pxp-prop-card-1-details-features text-uppercase">5 BD <span>|</span> 4.5 BA <span>|</span> 3,945 SF</div>
+                        </div>
+                        <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a href="single-property.html" class="pxp-prop-card-1 rounded-lg mb-4">
+                        <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static 'images/hero-prop-9.jpg' %}');"></div>
+                        <div class="pxp-prop-card-1-gradient pxp-animate"></div>
+                        <div class="pxp-prop-card-1-details">
+                            <div class="pxp-prop-card-1-details-title">Modern Residence</div>
+                            <div class="pxp-prop-card-1-details-price">$7,995</div>
+                            <div class="pxp-prop-card-1-details-features text-uppercase">4 BD <span>|</span> 1.5 BA <span>|</span> 2,240 SF</div>
+                        </div>
+                        <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a href="single-property.html" class="pxp-prop-card-1 rounded-lg mb-4">
+                        <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static 'images/hero-prop-9.jpg' %}');"></div>
+                        <div class="pxp-prop-card-1-gradient pxp-animate"></div>
+                        <div class="pxp-prop-card-1-details">
+                            <div class="pxp-prop-card-1-details-title">Luxury Mansion</div>
+                            <div class="pxp-prop-card-1-details-price">$5,430,000</div>
+                            <div class="pxp-prop-card-1-details-features text-uppercase">4 BD <span>|</span> 5 BA <span>|</span> 5,200 SF</div>
+                        </div>
+                        <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                    </a>
+                </div>
+            </div> 
 
+         <a href="properties.html" class="pxp-primary-cta text-uppercase mt-2 mt-md-4 pxp-animate">Browse All</a>
+        </div>
+
+        <div class="pt-100 pb-100 mt-100 position-relative">
+            <div class="pxp-services-c pxp-cover" style="background-image: url('{% static 'images/services-c-fig-2.jpg' %}');"></div>
+            <div class="pxp-services-c-content">
+                <div class="pxp-services-c-intro">
+                    <h2 class="pxp-section-h2">Why Choose US</h2>
+                    <p class="pxp-text-light">We offer perfect real estate services</p>
+                    <a href="#" class="pxp-primary-cta text-uppercase mt-2 mt-md-3 mt-lg-5 pxp-animate">Learn More</a>
+                </div>
+                <div class="pxp-services-c-container mt-4 mt-md-5 mt-lg-0">
+                    <div class="owl-carousel pxp-services-c-stage">
+                        <div>
+                            <a href="#" class="pxp-services-c-item">
+                                <div class="pxp-services-c-item-fig">
+                                    <img src="{% static 'images/service-icon-1.svg' %}" alt="Service Icon">
+                                </div>
+                                <div class="pxp-services-c-item-text text-center">
+                                    <div class="pxp-services-c-item-text-title">Find your future home</div>
+                                    <div class="pxp-services-c-item-text-sub">We help you find a new home by offering<br>a smart real estate experience</div>
+                                </div>
+                                <div class="pxp-services-c-item-cta text-uppercase text-center">Learn More</div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="pxp-services-c-item">
+                                <div class="pxp-services-c-item-fig">
+                                    <img src="{% static 'images/service-icon-2.svg' %}" alt="...">
+                                </div>
+                                <div class="pxp-services-c-item-text text-center">
+                                    <div class="pxp-services-c-item-text-title">Experienced agents</div>
+                                    <div class="pxp-services-c-item-text-sub">Find an agent who knows<br>your market best</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="pxp-services-c-item">
+                                <div class="pxp-services-c-item-fig">
+                                    <img src="{% static 'images/service-icon-3.svg' %}" alt="...">
+                                </div>
+                                <div class="pxp-services-c-item-text text-center">
+                                    <div class="pxp-services-c-item-text-title">Buy or rent homes</div>
+                                    <div class="pxp-services-c-item-text-sub">Millions of houses and apartments<br>in your favourite cities</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="pxp-services-c-item">
+                                <div class="pxp-services-c-item-fig">
+                                    <img src="{% static 'images/service-icon-4.svg' %}" alt="...">
+                                </div>
+                                <div class="pxp-services-c-item-text text-center">
+                                    <div class="pxp-services-c-item-text-title">List your own property</div>
+                                    <div class="pxp-services-c-item-text-sub">Sign up now and sell or rent<br>your own properties</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pxp-footer pt-100 pb-100 mt-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="pxp-footer-logo">Sknne</div>
+                        <div class="pxp-footer-social mt-2">
+                            <a href="#"><span class="fa fa-instagram"></span></a>
+                            <a href="#"><span class="fa fa-facebook-square"></span></a>
+                            <a href="#"><span class="fa fa-twitter"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-8">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <h4 class="pxp-footer-header mt-4 mt-lg-0">Company</h4>
+                                <ul class="list-unstyled pxp-footer-links mt-2">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Agents</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Demos</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <h4 class="pxp-footer-header mt-4 mt-lg-0">Actions</h4>
+                                <ul class="list-unstyled pxp-footer-links mt-2">
+                                    <li><a href="#">Buy Properties</a></li>
+                                    <li><a href="#">Rent Properties</a></li>
+                                    <li><a href="#">Sell Properties</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <h4 class="pxp-footer-header mt-4 mt-lg-0">Explore</h4>
+                                <ul class="list-unstyled pxp-footer-links mt-2">
+                                    <li><a href="#">Homes for Rent</a></li>
+                                    <li><a href="#">Apartments for Rent</a></li>
+                                    <li><a href="#">Homes for Sale</a></li>
+                                    <li><a href="#">Apartments for Sale</a></li>
+                                    <li><a href="#">CRM</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pxp-footer-bottom mt-2">
+                    <div><a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></div>
+                    <div class="pxp-footer-copyright">&copy; Resideo. All Rights Reserved. 2021</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="pxp-signin-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSigninModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="modal-title" id="pxpSigninModal">Welcome back!</h5>
+                        {%if messages%}
+                        <ul id="messages" class="messages">
+                            {% for message in messages %}
+                            {% if 'warning' in message.tags %}
+                            <li {% if message.tags %} id="msg" class="{{ message.tags}}" {% endif %}>{{message}}</li>
+                            {%endif%}
+                            {%endfor%}
+                        </ul>
+                        {%endif%}
+                        <form id="login_form" class="mt-4" action="/login"  method="post">
+                            {%csrf_token%}
+                            <div class="form-group">
+                                <label for="pxp-signin-email">Email</label>
+                                <input type="text" name="email" class="form-control" id="pxp-signin-email"
+                                    placeholder="Enter your email address">
+                                <span id="login_email_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="pxp-signin-pass">Password</label>
+                                <input type="password" name="password" class="form-control" id="pxp-signin-pass"
+                                    placeholder="Enter your password">
+                                <span id="login_password_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <button class="pxp-agent-contact-modal-btn" type="submit">SIGN IN</button>
+                            </div>
+                            <div class="form-group mt-4 text-center pxp-modal-small">
+                                <a href="password_reset/" class="pxp-modal-link">Forgot password</a>
+                            </div>
+                            <div class="text-center pxp-modal-small">
+                                New to Resideo? 
+                                <a href="javascript:void(0);" class="pxp-modal-link pxp-signup-trigger">Create an account</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="pxp-signup-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSignupModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="modal-title" id="pxpSignupModal">Create an account</h5>                        
+                        {%if messages%}
+                        <ul id="messages" class="messages">
+                            {% for message in messages %}
+                            {% if 'error' in message.tags %}
+                            <li {% if message.tags %} id="msg" class="{{ message.tags}}" {% endif %}>{{message}}</li>
+                            {%endif%}
+                            {%endfor%}
+                        </ul>
+                        {%endif%}
+                        <form action="/signup" class="mt-4" id="signup_form" method="post">
+                            {%csrf_token%}
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="pxp-signup-firstname">First Name</label>
+                                        <input name="first_name" id="first_name" type="text" class="form-control"
+                                            id="pxp-signup-firstname" placeholder="Enter first name">
+                                        <span id="first_name_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="pxp-signup-lastname">Last Name</label>
+                                        <input id="last_name" name="last_name" type="text" class="form-control"
+                                            id="pxp-signup-lastname" placeholder="Enter last name">
+                                        <span id="last_name_error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pxp-signup-email">Email</label>
+                                <input id="email" type="text" name="email" class="form-control" id="pxp-signup-email"
+                                    placeholder="Enter your email address">
+                                <span id="email_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="pxp-signup-pass">Password</label>
+                                <input id="password" type="password" name="password" class="form-control"
+                                    id="pxp-signup-pass" placeholder="Create a password">
+                                <span id="password_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="pxp-signup-pass">Confirm Password</label>
+                                <input id="confirm_password" type="password" name="cpw" class="form-control"
+                                    id="pxp-signup-pass" placeholder="Confirm password">
+                                <span id="confirm_password_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="pxp-signup-pass">Number</label>
+                                <input id="number" type="number" class="form-control" name="number" id="pxp-signup-pass"
+                                    placeholder="Enter Your Phone Number">
+                                <span id="number_error"></span>
+                            </div>
+                            <div class="form-group" id="signup_btn">
+                                <button class="pxp-agent-contact-modal-btn" type="submit">SIGN UP</button>
+                            </div>
+                            <div class="text-center mt-4 pxp-modal-small">
+                                Already have an account? <a href="javascript:void(0);"
+                                    class="pxp-modal-link pxp-signin-trigger">Sign in</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="email-exists" data-exists="{{ email_exists|yesno:"true,false" }}" style="display: none;"></div>
+        <div id="already-logged-in" data-logged-in="{{ already_logged_in|yesno:'true,false' }}" style="display: none;"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check for email exists flag
+                const emailExists = document.getElementById('email-exists').getAttribute('data-exists') === 'true';
     
+                if (emailExists) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email already exists!',
+                        confirmButtonText: 'Try Again'
+                    });
+                }
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="/static/js/jquery-3.4.1.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/owl.carousel.min.js"></script>
+        <script src="/static/js/main.js?lasjkj"></script>
+        <script src="/static/js/signup.js"></script>
+
+
+
+
+
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_KEY_HERE&libraries=geometry,places"></script>
+        <script src="{% static 'js/photoswipe.min.js' %}"></script>
+        <script src="{% static 'js/photoswipe-ui-default.min.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/gallery.js' %}"></script>
+        <script src="{% static 'js/infobox.js' %}"></script>
+        <script src="{% static 'js/single-map.js' %}"></script>
+        <script src="{% static 'js/Chart.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+    </body>
+
+</html> 
+
