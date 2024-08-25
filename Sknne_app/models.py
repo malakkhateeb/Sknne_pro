@@ -44,8 +44,6 @@ class User(models.Model):
     phone_number = models.CharField(max_length=15)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
     objects = UserManager()
     def __str__(self):
         return self.email
@@ -60,9 +58,9 @@ class City(models.Model):
 
 
 class Appartment(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='appartments' , on_delete=models.CASCADE)
     building_name = models.CharField(max_length=50)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, related_name='appartments', on_delete=models.CASCADE)
     title = models.CharField(max_length=45)
     overview = models.TextField()
     price = models.IntegerField()
@@ -80,8 +78,8 @@ class Image(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Estimation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    appartment = models.ForeignKey(Appartment, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,related_name='rating', on_delete=models.CASCADE)
+    appartment = models.ForeignKey(Appartment,related_name='rating' , on_delete=models.CASCADE)
     rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -99,3 +97,8 @@ def create_user(first_name , last_name , email , password , phone_number):
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
     return User.objects.create(first_name = first_name , last_name = last_name , email = email ,password = pw_hash ,  phone_number = phone_number)
 
+def show_city(name):
+    return City.objects.get(name = name)
+
+def show_room(id):
+    return Appartment.objects.get(id=id)

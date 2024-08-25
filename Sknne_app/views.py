@@ -8,7 +8,7 @@ def home(request):
         return render(request, 'index.html')
     else:
         context = {
-            'user':models.show_user(id = request.session['id'])
+            'user':models.show_user(id = request.session['id']),
         }
         return render(request, 'city.html', context)
 
@@ -55,6 +55,42 @@ def login(request):
             return redirect('/cities')
     else:
         return redirect('/')    
+
+
+def get_appartments(request):
+    if request.method == "POST":
+        request.session['city'] = request.POST['city']
+        return redirect('/appartments')
+    else: 
+        return redirect('/')
+
+def show_appartments(request):
+    if 'id' not in request.session : 
+        return redirect('')
+    else:
+        city = models.show_city(name = request.session['city'])
+        #all_appartments = all_appartments[:2]
+        context = {
+            "city": models.show_city(name = request.session['city']),
+        }
+        return render(request , 'appartments.html' , context)
+
+def get_room(request , id):
+    if request.method == "POST":
+        request.session['room_id'] = request.POST['room']
+        room = models.show_room(id=id)
+        return redirect('/room')
+    else: 
+        return redirect('/')
+
+def show_room(request):
+    if 'id' not in request.session : 
+        return redirect('')
+    else:
+        context = {
+            "room": models.show_room(id = request.session['room_id']),
+        }
+        return render(request , 'room.html' , context)
 
 
 def logout(request):

@@ -1,275 +1,328 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load static %}
-        <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <style>
-            #title{
-                font-size: 50px !important;
-            }
-            #h1{
-                font-size: 15px;
-            }
-                /* For Chrome, Safari, Edge, and Opera */
-            input[type="number"]::-webkit-inner-spin-button,
-            input[type="number"]::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
 
-            /* For Firefox */
-            input[type="number"] {
-                -moz-appearance: textfield;
-            }
-            .gradient-text {
-                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Adjust the direction and colors as needed */
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            
-        </style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        #title {
+            font-size: 50px !important;
+        }
+
+        #h1 {
+            font-size: 15px;
+        }
+
+        /* For Chrome, Safari, Edge, and Opera */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* For Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            /* Adjust the direction and colors as needed */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
     </style>
     <title>Sknne</title>
-    </head>
-    <body>
-                <!-- Start of Async Drift Code -->
-<script>
-    "use strict";
-    
-    !function() {
-    var t = window.driftt = window.drift = window.driftt || [];
-    if (!t.init) {
-        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-        t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-        t.factory = function(e) {
-        return function() {
-            var n = Array.prototype.slice.call(arguments);
-            return n.unshift(e), t.push(n), t;
-        };
-        }, t.methods.forEach(function(e) {
-        t[e] = t.factory(e);
-        }), t.load = function(t) {
-          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-        var i = document.getElementsByTagName("script")[0];
-        i.parentNode.insertBefore(o, i);
-        };
-    }
-    }();
-    drift.SNIPPET_VERSION = '0.3.1';
-    drift.load('g6s3dpwhnudz');
+</head>
+
+<body>
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('g6s3dpwhnudz');
     </script>
     <!-- End of Async Drift Code -->
-        <div class="pxp-header fixed-top pxp-animate">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-5 col-md-2">
-                        <a id="title" href="index.html" class="pxp-logo text-decoration-none ">Sknne</a>
-                    </div>
-                    <div class="col-2 col-md-8 text-center">
-                        <ul class="pxp-nav list-inline">
-                            <li class="list-inline-item">
-                                <a id="h1" href="#">Home</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="index.html">Version 1</a></li>
-                                    <li><a href="index-2.html">Version 2</a></li>
-                                    <li><a href="index-3.html">Version 3</a></li>
-                                    <li><a href="index-4.html">Version 4</a></li>
-                                    <li><a href="index-5.html">Version 5</a></li>
-                                    <li><a href="index-6.html">Version 6</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item">
-                                <a id="h1" href="#">Properties</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="properties.html">All Properties</a></li>
-                                    <li><a href="single-property.html">Single Property</a></li>
-                                    <li><a href="submit-property.html">Submit New Property</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item">
-                                <a id="h1" href="#">Agents</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="agents.html">All Agents</a></li>
-                                    <li><a href="single-agent.html">Single Agent</a></li>
-                                </ul>
-                            <li class="list-inline-item">
-                                <a id="h1" href="#">Themes</a>
-                                <ul class="pxp-nav-sub rounded-lg">
-                                    <li><a href="../light/index.html">Light</a></li>
-                                    <li><a href="../dark/index.html">Dark</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-inline-item pxp-is-last"><a id="h1" href="contact.html">Contact Us</a></li>
-                            <li class="list-inline-item pxp-has-btns">
-                                <div class="pxp-user-btns">
-                                    <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
-                                    <a href="#" class="pxp-user-btns-login pxp-signin-trigger">Sign In</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-5 col-md-2 text-right">
-                        <a href="javascript:void(0);" class="pxp-header-nav-trigger"><span class="fa fa-bars"></span></a>
-                        <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span class="fa fa-user-o"></span></a>
-                    </div>
+    <div class="pxp-header fixed-top pxp-animate">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-5 col-md-2">
+                    <a id="title" href="#" class="pxp-logo text-decoration-none ">Sknne</a>
+                </div>
+                <div class="col-2 col-md-8 text-center">
+                    <ul class="pxp-nav list-inline">
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Home</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="index.html">Version 1</a></li>
+                                <li><a href="index-2.html">Version 2</a></li>
+                                <li><a href="index-3.html">Version 3</a></li>
+                                <li><a href="index-4.html">Version 4</a></li>
+                                <li><a href="index-5.html">Version 5</a></li>
+                                <li><a href="index-6.html">Version 6</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Properties</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="properties.html">All Properties</a></li>
+                                <li><a href="single-property.html">Single Property</a></li>
+                                <li><a href="submit-property.html">Submit New Property</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Agents</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="agents.html">All Agents</a></li>
+                                <li><a href="single-agent.html">Single Agent</a></li>
+                            </ul>
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Themes</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="../light/index.html">Light</a></li>
+                                <li><a href="../dark/index.html">Dark</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item pxp-is-last"><a id="h1" href="contact.html">Contact Us</a></li>
+                        <li class="list-inline-item pxp-has-btns">
+                            <div class="pxp-user-btns">
+                                <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
+                                <a href="#" class="pxp-user-btns-login pxp-signin-trigger">Sign In</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-2 text-right">
+                    <a href="javascript:void(0);" class="pxp-header-nav-trigger"><span class="fa fa-bars"></span></a>
+                    <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span
+                            class="fa fa-user-o"></span></a>
                 </div>
             </div>
         </div>
-        <div class="pxp-content">
-            <div class="pxp-hero vh-100">
-                    <div class="pxp-hero-bg pxp-cover pxp-cover-bottom" style="background-image: url('{% static 'images/photo-1531824475211-72594993ce2a.avif' %}');"></div>
-                    <div class="pxp-hero-opacity"></div>
-                <div class="pxp-hero-caption">
-                    
-            <div class="container mt-100">
-                <!-- <h2 class="pxp-section-h2">Explore Our Neighborhoods</h2>
+    </div>
+    <div class="pxp-content">
+        <div class="pxp-hero vh-100">
+            <div class="pxp-hero-bg pxp-cover pxp-cover-bottom"
+                style="background-image: url('{% static 'images/photo-1531824475211-72594993ce2a.avif' %}');"></div>
+            <div class="pxp-hero-opacity"></div>
+            <div class="pxp-hero-caption">
+
+                <div class="container mt-100">
+                    <!-- <h2 class="pxp-section-h2">Explore Our Neighborhoods</h2>
                 <p class="pxp-text-light">Browse our comprehensive neighborhood listings</p> -->
-                <div class="row mt-4 mt-md-5">
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <a href="properties.html" class="pxp-areas-1-item rounded-lg">
-                            <div class="pxp-areas-1-item-fig pxp-cover" style="background-image:url('{% static 'images/image0.jpeg__1320x740_q95_crop_subject_location-1924,2171_subsampling-2_upscale.jpg' %}');"></div>
-                            <div class="pxp-areas-1-item-details">
-                                <div class="pxp-areas-1-item-details-area">Nablus</div>
-                            </div>
-                            <div class="pxp-areas-1-item-counter"><span>5 Appartments</span></div>
-                            <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
-                        </a>
+                    <div class="row mt-4 mt-md-5">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <a href="#" onclick="document.getElementById('Nablus').submit()"
+                                class="pxp-areas-1-item rounded-lg">
+                                <div class="pxp-areas-1-item-fig pxp-cover"
+                                    style="background-image:url('{% static 'images/image0.jpeg__1320x740_q95_crop_subject_location-1924,2171_subsampling-2_upscale.jpg' %}');">
+                                </div>
+                                <div class="pxp-areas-1-item-details">
+                                    <div class="pxp-areas-1-item-details-area">Nablus</div>
+                                    <form action="/city" id="Nablus" method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="city" value="Nablus">
+                                    </form>
+                                </div>
+                                <div class="pxp-areas-1-item-counter"><span>5 Appartments</span></div>
+                                <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <a href="#" onclick="document.getElementById('Ramallah').submit()"
+                                class="pxp-areas-1-item rounded-lg">
+                                <div class="pxp-areas-1-item-fig pxp-cover"
+                                    style="background-image: url('{% static 'images/MQ6OA-235-4 y12ju4-jk24kmkm6 -25.jpg' %}');">
+                                </div>
+                                <div class="pxp-areas-1-item-details">
+                                    <div class="pxp-areas-1-item-details-area">Ramallah</div>
+                                    <form action="/city" id="Ramallah" method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="city" value="Ramallah">
+                                    </form>
+                                </div>
+                                <div class="pxp-areas-1-item-counter"><span>100 Appartments</span></div>
+                                <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <a href="#" onclick="document.getElementById('Jenin').submit()"
+                                class="pxp-areas-1-item rounded-lg">
+                                <div class="pxp-areas-1-item-fig pxp-cover"
+                                    style="background-image:url('{% static 'images/bKMIN.jpg' %}');"></div>
+                                <div class="pxp-areas-1-item-details">
+                                    <div class="pxp-areas-1-item-details-area">Jenin</div>
+                                    <form action="/city" id="Jenin" method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="city" value="Jenin">
+                                    </form>
+                                </div>
+                                <div class="pxp-areas-1-item-counter"><span>20 Appartments</span></div>
+                                <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <a href="#" onclick="document.getElementById('Tulkarem').submit()"
+                                class="pxp-areas-1-item rounded-lg">
+                                <div class="pxp-areas-1-item-fig pxp-cover"
+                                    style="background-image:url('{% static 'images/business-and-economics-main.webp' %}');">
+                                </div>
+                                <div class="pxp-areas-1-item-details">
+                                    <div class="pxp-areas-1-item-details-area">Tulkarem</div>
+                                    <form action="/city" id="Tulkarem" method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="city" value="Tulkarem">
+                                    </form>
+                                </div>
+                                <div class="pxp-areas-1-item-counter"><span>10 Appartments</span></div>
+                                <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <a href="#" onclick="document.getElementById('Betlahem').submit()"
+                                class="pxp-areas-1-item rounded-lg">
+                                <div class="pxp-areas-1-item-fig pxp-cover"
+                                    style="background-image: url('{% static 'images/2019-09-12-German-Academics.jpg' %}');">
+                                </div>
+                                <div class="pxp-areas-1-item-details">
+                                    <div class="pxp-areas-1-item-details-area">Betlahem</div>
+                                    <form action="/city" id="Betlahem" method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="city" value="Betlahem">
+                                    </form>
+                                </div>
+                                <div class="pxp-areas-1-item-counter"><span>4 Appartments</span></div>
+                                <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <a href="#" onclick="document.getElementById('Hebron').submit()"
+                                class="pxp-areas-1-item rounded-lg">
+                                <div class="pxp-areas-1-item-fig pxp-cover"
+                                    style="background-image:url('{% static 'images/IMG_7867.jpg' %}');"></div>
+                                <div class="pxp-areas-1-item-details">
+                                    <div class="pxp-areas-1-item-details-area">Hebron</div>
+                                    <form action="/city" id="Hebron" method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="city" value="Hebron">
+                                    </form>
+                                </div>
+                                <div class="pxp-areas-1-item-counter"><span>20 Appartments</span></div>
+                                <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <a href="properties.html" class="pxp-areas-1-item rounded-lg">
-                            <div class="pxp-areas-1-item-fig pxp-cover" style="background-image: url('{% static 'images/MQ6OA-235-4 y12ju4-jk24kmkm6 -25.jpg' %}');"></div>
-                            <div class="pxp-areas-1-item-details">
-                                <div class="pxp-areas-1-item-details-area">Ramallah</div>
-                            </div>
-                            <div class="pxp-areas-1-item-counter"><span>100 Appartments</span></div>
-                            <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <a href="properties.html" class="pxp-areas-1-item rounded-lg">
-                            <div class="pxp-areas-1-item-fig pxp-cover" style="background-image:url('{% static 'images/bKMIN.jpg' %}');"></div>
-                            <div class="pxp-areas-1-item-details">
-                                <div class="pxp-areas-1-item-details-area">Jenin</div>
-                            </div>
-                            <div class="pxp-areas-1-item-counter"><span>20 Appartments</span></div>
-                            <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <a href="properties.html" class="pxp-areas-1-item rounded-lg">
-                            <div class="pxp-areas-1-item-fig pxp-cover" style="background-image:url('{% static 'images/business-and-economics-main.webp' %}');"></div>
-                            <div class="pxp-areas-1-item-details">
-                                <div class="pxp-areas-1-item-details-area">Tulkarem</div>
-                            </div>
-                            <div class="pxp-areas-1-item-counter"><span>10 Appartments</span></div>
-                            <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <a href="properties.html" class="pxp-areas-1-item rounded-lg">
-                            <div class="pxp-areas-1-item-fig pxp-cover" style="background-image: url('{% static 'images/2019-09-12-German-Academics.jpg' %}');"></div>
-                            <div class="pxp-areas-1-item-details">
-                                <div class="pxp-areas-1-item-details-area">Betlahem</div>
-                            </div>
-                            <div class="pxp-areas-1-item-counter"><span>4 Appartments</span></div>
-                            <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <a href="properties.html" class="pxp-areas-1-item rounded-lg">
-                            <div class="pxp-areas-1-item-fig pxp-cover" style="background-image:url('{% static 'images/IMG_7867.jpg' %}');"></div>
-                            <div class="pxp-areas-1-item-details">
-                                <div class="pxp-areas-1-item-details-area">Hebron</div>
-                            </div>
-                            <div class="pxp-areas-1-item-counter"><span>20 Appartments</span></div>
-                            <div class="pxp-areas-1-item-cta text-uppercase">Explore</div>
-                        </a>
-                    </div>
-                </div>
 
-                <a href="properties.html" class="pxp-primary-cta text-uppercase mt-2 mt-md-4 pxp-animate">Explore Neighborhoods</a>
-            </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="pxp-services pxp-cover mt-100 pt-100 mb-200" style="background-image: url('{% static "images/services-h-fig.jpg" %}'); background-position: 50% 60%;">
-
-            <h2 class="text-center pxp-section-h2">Why Choose Us</h2>
-            <p class="pxp-text-light text-center">We offer perfect real estate services</p>
-
-            <div class="container">
-                <div class="pxp-services-container rounded-lg mt-4 mt-md-5">
-                    <a href="properties.html" class="pxp-services-item">
-                        <div class="pxp-services-item-fig">
-                            <img src="{% static 'images/service-icon-1.svg' %}" alt="Service Icon">
-                        </div>
-                        <div class="pxp-services-item-text text-center">
-                            <div class="pxp-services-item-text-title">Find your future home</div>
-                            <div class="pxp-services-item-text-sub">We help you find a new home by offering<br>a smart real estate experience</div>
-                        </div>
-                        <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
-                    </a>
-                    <a href="agents.html" class="pxp-services-item">
-                        <div class="pxp-services-item-fig">
-                            <img src="{% static 'images/service-icon-2.svg' %}" alt="...">
-
-                        </div>
-                        <div class="pxp-services-item-text text-center">
-                            <div class="pxp-services-item-text-title">Experienced agents</div>
-                            <div class="pxp-services-item-text-sub">Find an agent who knows<br>your market best</div>
-                        </div>
-                        <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
-                    </a>
-                    <a href="properties.html" class="pxp-services-item">
-                        <div class="pxp-services-item-fig">
-                            <img src="{% static 'images/service-icon-3.svg' %}" alt="...">
-
-                        </div>
-                        <div class="pxp-services-item-text text-center">
-                            <div class="pxp-services-item-text-title">Buy or rent homes</div>
-                            <div class="pxp-services-item-text-sub">hundreds of Appartments<br>your favourite cities</div>
-                        </div>
-                        <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
-                    </a>
-                    <a href="submit-property.html" class="pxp-services-item">
-                        <div class="pxp-services-item-fig">
-                            <img src="{% static 'images/service-icon-4.svg' %}" alt="...">
-                        </div>
-                        <div class="pxp-services-item-text text-center">
-                            <div class="pxp-services-item-text-title">List your own property</div>
-                            <div class="pxp-services-item-text-sub">Sign up now rent<br>your own properties</div>
-                        </div>
-                        <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
-                    </a>
-                    <div class="clearfix"></div>
+                    <a href="properties.html" class="pxp-primary-cta text-uppercase mt-2 mt-md-4 pxp-animate">Explore
+                        Neighborhoods</a>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    <div class="pxp-services pxp-cover mt-100 pt-100 mb-200" style="background-image: url('{% static "
+        images/services-h-fig.jpg" %}'); background-position: 50% 60%;">
 
-        <div class="pxp-cta-1 pxp-cover mt-100 pt-300" style="background-image: url('{% static "images/cta-fig-1.jpg" %}'); background-position: 50% 60%;">
+        <h2 class="text-center pxp-section-h2">Why Choose Us</h2>
+        <p class="pxp-text-light text-center">We offer perfect real estate services</p>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="pxp-cta-1-caption pxp-animate-in">
-                            <h2 class="pxp-section-h2">Search Smarter, From Anywhere</h2>
-                            <p class="pxp-text-light">Power your search with our Sknne real estate platform, for timely listings and a seamless experience.</p>
-                            <a href="properties.html" class="pxp-primary-cta text-uppercase mt-3 mt-md-5 pxp-animate">Search Now</a>
-                        </div>
+        <div class="container">
+            <div class="pxp-services-container rounded-lg mt-4 mt-md-5">
+                <a href="properties.html" class="pxp-services-item">
+                    <div class="pxp-services-item-fig">
+                        <img src="{% static 'images/service-icon-1.svg' %}" alt="Service Icon">
+                    </div>
+                    <div class="pxp-services-item-text text-center">
+                        <div class="pxp-services-item-text-title">Find your future home</div>
+                        <div class="pxp-services-item-text-sub">We help you find a new home by offering<br>a smart real
+                            estate experience</div>
+                    </div>
+                    <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
+                </a>
+                <a href="agents.html" class="pxp-services-item">
+                    <div class="pxp-services-item-fig">
+                        <img src="{% static 'images/service-icon-2.svg' %}" alt="...">
+
+                    </div>
+                    <div class="pxp-services-item-text text-center">
+                        <div class="pxp-services-item-text-title">Experienced agents</div>
+                        <div class="pxp-services-item-text-sub">Find an agent who knows<br>your market best</div>
+                    </div>
+                    <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
+                </a>
+                <a href="properties.html" class="pxp-services-item">
+                    <div class="pxp-services-item-fig">
+                        <img src="{% static 'images/service-icon-3.svg' %}" alt="...">
+
+                    </div>
+                    <div class="pxp-services-item-text text-center">
+                        <div class="pxp-services-item-text-title">Buy or rent homes</div>
+                        <div class="pxp-services-item-text-sub">hundreds of Appartments<br>your favourite cities</div>
+                    </div>
+                    <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
+                </a>
+                <a href="submit-property.html" class="pxp-services-item">
+                    <div class="pxp-services-item-fig">
+                        <img src="{% static 'images/service-icon-4.svg' %}" alt="...">
+                    </div>
+                    <div class="pxp-services-item-text text-center">
+                        <div class="pxp-services-item-text-title">List your own property</div>
+                        <div class="pxp-services-item-text-sub">Sign up now rent<br>your own properties</div>
+                    </div>
+                    <div class="pxp-services-item-cta text-uppercase text-center">Learn More</div>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pxp-cta-1 pxp-cover mt-100 pt-300" style="background-image: url('{% static " images/cta-fig-1.jpg" %}');
+        background-position: 50% 60%;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="pxp-cta-1-caption pxp-animate-in">
+                        <h2 class="pxp-section-h2">Search Smarter, From Anywhere</h2>
+                        <p class="pxp-text-light">Power your search with our Sknne real estate platform, for timely
+                            listings and a seamless experience.</p>
+                        <a href="properties.html" class="pxp-primary-cta text-uppercase mt-3 mt-md-5 pxp-animate">Search
+                            Now</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
     <div class="pxp-footer pt-100 pb-100 mt-100">
@@ -324,7 +377,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="pxp-signin-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSigninModal" aria-hidden="true">
+    <div class="modal fade" id="pxp-signin-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSigninModal"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -333,11 +387,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex justify-content-between align-items-center my-2">
-                        <h1>Welcome, {{user.first_name}}</h1>
+                    <div class="align-items-center my-2 text-center">
+                        <h2>Logout, {{user.first_name}}</h2>
+                        <p>After logging out of the system you will still be able to access dashbord</p>
                         <form action="/logout" method="post">
-                          {% csrf_token %}
-                            <input type="submit" value="Log Out" class="btn btn-sm btn-danger">
+                            {% csrf_token %}
+                            <input type="submit" value="Log Out" name="logout" class="btn btn-sm btn-danger">
                         </form>
                     </div>
                 </div>
@@ -345,7 +400,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="pxp-signup-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSignupModal" aria-hidden="true">
+    <div class="modal fade" id="pxp-signup-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSignupModal"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -360,37 +416,44 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="pxp-signup-firstname">First Name</label>
-                                    <input type="text" class="form-control" id="pxp-signup-firstname" placeholder="Enter first name">
+                                    <input type="text" class="form-control" id="pxp-signup-firstname"
+                                        placeholder="Enter first name">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="pxp-signup-lastname">Last Name</label>
-                                    <input type="text" class="form-control" id="pxp-signup-lastname" placeholder="Enter last name">
+                                    <input type="text" class="form-control" id="pxp-signup-lastname"
+                                        placeholder="Enter last name">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pxp-signup-email">Email</label>
-                            <input type="text" class="form-control" id="pxp-signup-email" placeholder="Enter your email address">
+                            <input type="text" class="form-control" id="pxp-signup-email"
+                                placeholder="Enter your email address">
                         </div>
                         <div class="form-group">
                             <label for="pxp-signup-pass">Password</label>
-                            <input type="password" class="form-control" id="pxp-signup-pass" placeholder="Create a password">
+                            <input type="password" class="form-control" id="pxp-signup-pass"
+                                placeholder="Create a password">
                         </div>
                         <div class="form-group">
                             <label for="pxp-signup-pass">Confirm Password</label>
-                            <input type="password" class="form-control" id="pxp-signup-pass" placeholder="Confirm password">
+                            <input type="password" class="form-control" id="pxp-signup-pass"
+                                placeholder="Confirm password">
                         </div>
                         <div class="form-group">
                             <label for="pxp-signup-pass">Number</label>
-                            <input type="number" class="form-control" id="pxp-signup-pass" placeholder="Enter Your Phone Number">
+                            <input type="number" class="form-control" id="pxp-signup-pass"
+                                placeholder="Enter Your Phone Number">
                         </div>
                         <div class="form-group">
                             <a href="#" class="pxp-agent-contact-modal-btn">Sign Up</a>
                         </div>
                         <div class="text-center mt-4 pxp-modal-small">
-                            Already have an account? <a href="javascript:void(0);" class="pxp-modal-link pxp-signin-trigger">Sign in</a>
+                            Already have an account? <a href="javascript:void(0);"
+                                class="pxp-modal-link pxp-signin-trigger">Sign in</a>
                         </div>
                     </form>
                 </div>
@@ -403,5 +466,3 @@
     <script src="/static/js/owl.carousel.min.js"></script>
     <script src="/static/js/main.js?lasjkj"></script>
 </body>
-
-
