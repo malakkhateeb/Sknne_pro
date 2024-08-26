@@ -73,7 +73,7 @@ class Appartment(models.Model):
 
 class Image(models.Model):
     appartment = models.ForeignKey(Appartment , related_name='images' , on_delete=models.CASCADE)
-    images = models.ImageField()
+    images = models.ImageField(upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -102,3 +102,7 @@ def show_city(name):
 
 def show_room(id):
     return Appartment.objects.get(id=id)
+
+def room_owner(id):
+    room = Appartment.objects.get(id=id)
+    return room.owner.id

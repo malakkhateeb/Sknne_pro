@@ -1,7 +1,8 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect ,get_object_or_404
 from django.contrib import messages 
 from . import models
-
+from django.core.mail import send_mail
+from Sknne_pro.settings import EMAIL_HOST_USER
 
 def home(request):
     if 'id' not in request.session :
@@ -52,6 +53,7 @@ def login(request):
         else:
             user = models.view_user(email = request.POST['email'])
             request.session['id'] = user.id
+            request.session['name'] = user.first_name
             return redirect('/cities')
     else:
         return redirect('/')    
@@ -66,7 +68,7 @@ def get_appartments(request):
 
 def show_appartments(request):
     if 'id' not in request.session : 
-        return redirect('')
+        return redirect('/')
     else:
         city = models.show_city(name = request.session['city'])
         #all_appartments = all_appartments[:2]
@@ -84,13 +86,29 @@ def get_room(request , id):
         return redirect('/')
 
 def show_room(request):
-    if 'id' not in request.session : 
-        return redirect('')
+    if 'room_id' not in request.session : 
+        return redirect('/')
     else:
         context = {
             "room": models.show_room(id = request.session['room_id']),
         }
         return render(request , 'room.html' , context)
+
+def send_email(request):
+    if 'id' not in request.session : 
+        return redirect('/')
+    else:
+        if request.method == 'POST':
+            owner_id = models.room_owner(id = request.session['room_id'])
+            owner_name = models.show_user(id = owner_id).first_name
+            subject = "New Message Regarding Your Appartment on Sknne"
+            message = f" Dear Mr. {owner_name} You Have A new Message Regarding Your Appartment on Sknne app {"\n"} Name: {request.POST['name']} {"\n"} Email: {request.POST['email']} {"\n"} Phone: {request.POST['phone']} {"\n"} Message : {request.POST['message']} {"\n"}{"\n"}{"\n"} Please Dont Reply to this message "
+            email1 = models.show_user(id = owner_id).email
+            recipient_list = [email1]
+            send_mail(subject , message , "Sknne App" , recipient_list , fail_silently=True)
+            return redirect('/room')
+        else:
+            return redirect('/room')
 
 
 def logout(request):
