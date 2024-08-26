@@ -477,21 +477,50 @@
         </div>
         <div id="email-exists" data-exists="{{ email_exists|yesno:"true,false" }}" style="display: none;"></div>
         <div id="already-logged-in" data-logged-in="{{ already_logged_in|yesno:'true,false' }}" style="display: none;"></div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Check for email exists flag
-                const emailExists = document.getElementById('email-exists').getAttribute('data-exists') === 'true';
-    
-                if (emailExists) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Email already exists!',
-                        confirmButtonText: 'Try Again'
-                    });
-                }
+  <!-- Include SweetAlert library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Check for email exists flag (registration)
+        const emailExistsElement = document.getElementById('email-exists');
+        if (emailExistsElement && emailExistsElement.getAttribute('data-exists') === 'true') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email already exists!',
+                confirmButtonText: 'Try Again'
             });
-        </script>
+        }
+
+        // Check for email not registered flag (login)
+        {% if request.session.email_not_registered %}
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'This email is not registered!',
+                confirmButtonText: 'Try Again'
+            });
+
+            // Remove the session variable after displaying the alert
+            fetch('{% url "clear_email_not_registered" %}');
+        {% endif %}
+
+        // Trigger SweetAlert for other messages (general errors)
+        {% if messages %}
+            {% for message in messages %}
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '{{ message }}',
+                });
+            {% endfor %}
+        {% endif %}
+
+    });
+</script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="/static/js/jquery-3.4.1.min.js"></script>
         <script src="/static/js/popper.min.js"></script>

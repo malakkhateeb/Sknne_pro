@@ -44,8 +44,6 @@ class User(models.Model):
     phone_number = models.CharField(max_length=15)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
     objects = UserManager()
     def __str__(self):
         return self.email
@@ -78,7 +76,8 @@ class Appartment(models.Model):
 class Estimation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     appartment = models.ForeignKey(Appartment, on_delete=models.CASCADE)
-    rating = models.IntegerField()
+    rating = models.FloatField()
+    total_votes = models.FloatField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
