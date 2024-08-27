@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    {% load static %}
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
@@ -13,37 +12,6 @@
     <link rel="stylesheet" href="/static/css/default-skin/default-skin.css">
     <link rel="stylesheet" href="/static/css/style.css?sadswq">
     <title>Sknne</title>
-    <style>
-        .rating-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .rating-text {
-            font-size: 18px;
-            margin-right: 10px;
-        }
-        .rating-form {
-            display: flex;
-            align-items: center;
-        }
-        .rating-form input[type="radio"] {
-            display: none;
-        }
-        .fa-star {
-            font-size: 24px; /* Adjusted size */
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .fa-star.checked {
-            color: #f39c12;
-        }
-        .fa-star:hover, .fa-star:hover ~ .fa-star {
-            color: #f39c12;
-        }
-    </style>
 </head>
 
 <body>
@@ -133,9 +101,8 @@
                 </div>
                 <div class="col-2 col-md-8 text-center">
                     <ul class="pxp-nav list-inline">
-                            <li class="list-inline-item">
-                                <a id="h1" href="/">Home</a>
-                            </li>
+                        <li class="list-inline-item">
+                            <a href="/">Home</a>
                         </li>
                         <li class="list-inline-item">
                             <a href="#">Properties</a>
@@ -288,14 +255,13 @@
                     <div id="map" style="height: 340px;"></div>
                     <div class="pxp-single-property-section mt-4 mt-md-5">
                     </div>
-
                 </div>
                     <div class="col-lg-4">
                         <div class="pxp-single-property-section pxp-sp-agent-section mt-4 mt-md-5 mt-lg-0">
                             <h3>Listed By</h3>
                             <div class="pxp-sp-agent mt-3 mt-md-4">
                                 <a href="single-agent.html" class="pxp-sp-agent-fig pxp-cover rounded-lg"
-                                    style="background-image: url('/static/images/user-profile-icon-free-vector.jpg'); background-position: top center"></a>
+                                    style="background-image: url(images/agent-4.jpg); background-position: top center"></a>
                                 <div class="pxp-sp-agent-info">
                                     <div class="pxp-sp-agent-info-name"><a
                                             href="single-agent.html">{{room.owner.first_name}}{{' '}}{{room.owner.last_name}}</a></div>
@@ -315,62 +281,58 @@
                                     <a href="#pxp-contact-agent" class="pxp-sp-agent-btn" data-toggle="modal"
                                         data-target="#pxp-contact-agent"><span class="fa fa-calendar-check-o"></span>
                                         Request Tour</a>
-                               
                                 </div>
-                                <div class="tab-content mt-3">
-                                    <div class="tab-pane active" id="elementary" role="tabpanel">
-                                        <table class="table table-responsive pxp-table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Rating</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Rate the Apartments</td>
-                                                    <td>
-                                                        <div class="rating-form">
-                                                            {% csrf_token %}
-                                                            <input type="hidden" id="appartment_id" value="{{ appartment.id }}">
-                                                            <div>
-                                                                <label for="star1">
-                                                                    <input type="radio" id="star1" name="rating" value="1"> 
-                                                                    <span class="fa fa-star" title="1 Star"></span>
-                                                                </label>
-                                                                <label for="star2">
-                                                                    <input type="radio" id="star2" name="rating" value="2"> 
-                                                                    <span class="fa fa-star" title="2 Stars"></span>
-                                                                </label>
-                                                                <label for="star3">
-                                                                    <input type="radio" id="star3" name="rating" value="3"> 
-                                                                    <span class="fa fa-star" title="3 Stars"></span>
-                                                                </label>
-                                                                <label for="star4">
-                                                                    <input type="radio" id="star4" name="rating" value="4"> 
-                                                                    <span class="fa fa-star" title="4 Stars"></span>
-                                                                </label>
-                                                                <label for="star5">
-                                                                    <input type="radio" id="star5" name="rating" value="5"> 
-                                                                    <span class="fa fa-star" title="5 Stars"></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            
-                                
-
                             </div>
                         </div>
+                        <div class="tab-content mt-3">
+                                <div class="tab-pane active" id="elementary" role="tabpanel">
+                                    <table class="table table-responsive pxp-table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Rate the Apartments</td>
+                                                <td>
+                                                    <div class="rating-form">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" id="appartment_id"
+                                                            value="{{ appartment.id }}">
+                                                        <div>
+                                                            <label for="star1">
+                                                                <input type="radio" id="star1" name="rating" value="1">
+                                                                <span class="fa fa-star" title="1 Star"></span>
+                                                            </label>
+                                                            <label for="star2">
+                                                                <input type="radio" id="star2" name="rating" value="2">
+                                                                <span class="fa fa-star" title="2 Stars"></span>
+                                                            </label>
+                                                            <label for="star3">
+                                                                <input type="radio" id="star3" name="rating" value="3">
+                                                                <span class="fa fa-star" title="3 Stars"></span>
+                                                            </label>
+                                                            <label for="star4">
+                                                                <input type="radio" id="star4" name="rating" value="4">
+                                                                <span class="fa fa-star" title="4 Stars"></span>
+                                                            </label>
+                                                            <label for="star5">
+                                                                <input type="radio" id="star5" name="rating" value="5">
+                                                                <span class="fa fa-star" title="5 Stars"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div class="pxp-footer pt-100 pb-100 mt-100">
             <div class="container">
@@ -421,7 +383,6 @@
                         </div>
                     </div>
                 </div>
-         
 
                 <div class="pxp-footer-bottom mt-2">
                     <div><a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></div>
@@ -479,7 +440,6 @@
                 </div>
             </div>
         </div>
-        
 
         <div class="modal fade" id="pxp-contact-agent" tabindex="-1" role="dialog"
             aria-labelledby="pxpContactAgentModal" aria-hidden="true">
@@ -519,8 +479,6 @@
                 </div>
             </div>
         </div>
-  
-
 
         <div class="modal fade" id="pxp-signin-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSigninModal"
             aria-hidden="true">
@@ -544,32 +502,6 @@
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('.fa-star').on('mouseover', function() {
-                    var rating = $(this).prev().val();
-                    $('input[name="rating"]').val(rating);
-                    $('.fa-star').removeClass('checked');
-                    $(this).prevAll().addBack().addClass('checked');
-                    $.ajax({
-                        type: 'POST',
-                        url: '{% url "submit_rating" %}',
-                        data: {
-                            'appartment_id': $('#appartment_id').val(),
-                            'rating': rating,
-                            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
-                        },
-                        success: function(response) {
-                            console.log('Rating submitted successfully.');
-                        },
-                        error: function(xhr, status, error) {
-                            console.log('Error: ' + error);
-                        }
-                    });
-                });
-            });
-        </script>
         <script src="/static/js/jquery-3.4.1.min.js"></script>
         <script src="/static/js/popper.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
