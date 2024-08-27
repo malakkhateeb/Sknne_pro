@@ -1,5 +1,6 @@
-https://github.com/malakkhateeb/Skkne.git
 About Us:
+
+Sknne:
 _________________________________________
 
 Finding the right apartment while studying away from home can be a daunting task. That’s why we’ve created [Sknne]—a comprehensive online platform designed to simplify the apartment search process for students across Palestine.
