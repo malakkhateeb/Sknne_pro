@@ -51,6 +51,7 @@ class User(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=45)
+    zip_code = models.CharField(max_length=45,default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
@@ -66,6 +67,9 @@ class Appartment(models.Model):
     price = models.IntegerField()
     room_count = models.IntegerField()
     address = models.TextField()
+    longitude = models.TextField(default="")
+    latitude = models.TextField(default="")
+    place_id = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
