@@ -16,6 +16,8 @@ Interactive Chatbot: Our website features an intelligent chatbot ready to assist
 _______________________________________________
 [ERD](https://github.com/user-attachments/assets/b7d393a1-6fc2-4fa4-b37c-f0f98c578e5b)
 
+[Wireframe](https://github.com/user-attachments/files/16764337/New_Project_.2.pdf)
+
 
 
 
