@@ -1,10 +1,12 @@
 from django.shortcuts import render , redirect ,get_object_or_404
-from django.contrib import messages 
+from django.contrib import messages
+from django.views import View 
 from . import models
 from django.http import JsonResponse
 from .models import Estimation, Appartment
 from django.contrib.auth.models import User
-
+import googlemaps
+from django.conf import settings
 from django.core.mail import send_mail
 from Sknne_pro.settings import EMAIL_HOST_USER
 
@@ -141,10 +143,9 @@ def get_appartments(request):
         return redirect('/')
 
 def show_appartments(request):
-    if 'id' not in request.session : 
-        return redirect('/')
+    if 'city' not in request.session : 
+        return redirect('')
     else:
-        city = models.show_city(name = request.session['city'])
         #all_appartments = all_appartments[:2]
         context = {
             "city": models.show_city(name = request.session['city']),
@@ -154,7 +155,6 @@ def show_appartments(request):
 def get_room(request , id):
     if request.method == "POST":
         request.session['room_id'] = request.POST['room']
-        room = models.show_room(id=id)
         return redirect('/room')
     else: 
         return redirect('/')
@@ -163,8 +163,19 @@ def show_room(request):
     if 'room_id' not in request.session : 
         return redirect('/')
     else:
+        geoCodingInformaion = GeoCodingView.getGeoCodingInfo(request)
+        locations = []
+        location = {
+            'latitude':float(geoCodingInformaion['latitude']),
+            'longitude':float(geoCodingInformaion['longitude']),
+            'name':models.show_room(id = request.session['room_id']).building_name
+        }
+        locations.append(location)
         context = {
             "room": models.show_room(id = request.session['room_id']),
+            "locations":locations,
+            'place_id':  geoCodingInformaion['place_id'],
+            'key': settings.GOOGLE_API_KEY,
         }
         return render(request , 'room.html' , context)
 
@@ -188,3 +199,31 @@ def send_email(request):
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+class GeoCodingView(View):
+
+    def getGeoCodingInfo(request):
+        appartment = models.show_room(id = request.session['room_id'])
+        if appartment.longitude and appartment.latitude and appartment.place_id != None:
+            longitude = appartment.longitude
+            latitude = appartment.latitude
+            place_id = appartment.place_id
+        else:
+            city = appartment.city
+            address_string = str(appartment.address) + ", " +  str(city.zip_code) + ", " + str(city.name) + ", Palestine"
+            gmaps = googlemaps.Client(key=settings.GOOGLE_API_KEY)
+            result = gmaps.geocode(address_string)[0]
+            latitude = result.get('geometry', {}).get('location', {}).get('lat', None)
+            longitude = result.get('geometry', {}).get('location', {}).get('lng', None)
+            place_id = result.get('place_id', {})
+            appartment.latitude = latitude
+            appartment.longitude = longitude
+            appartment.place_id = place_id
+            appartment.save()
+
+        context = {
+            'longitude': longitude,
+            'latitude': latitude,
+            'place_id': place_id
+        }
+        return context
