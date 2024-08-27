@@ -85,6 +85,7 @@ class Estimation(models.Model):
     user = models.ForeignKey(User,related_name='rating', on_delete=models.CASCADE)
     appartment = models.ForeignKey(Appartment,related_name='rating' , on_delete=models.CASCADE)
     rating = models.IntegerField()
+    total_votes = models.FloatField(default=0)  # Added to track votes
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):

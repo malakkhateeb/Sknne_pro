@@ -3,16 +3,21 @@ from django.contrib import messages
 from django.views import View 
 from . import models
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Estimation, Appartment
 from django.contrib.auth.models import User
+<<<<<<< Updated upstream
 import googlemaps
 from django.conf import settings
+=======
+from django.contrib.auth.decorators import login_required
+>>>>>>> Stashed changes
 from django.core.mail import send_mail
 from Sknne_pro.settings import EMAIL_HOST_USER
 
 def home(request):
     if 'id' not in request.session :
-        return render(request, 'index.html')
+        return render(request, 'owners.html')
     else:
         context = {
             'user':models.show_user(id = request.session['id']),
@@ -90,49 +95,70 @@ def clear_email_not_registered(request):
 
 
 
-def rate_appartment(request):
-    if request.method == 'POST':
-        user_id = request.POST.get('user_id')
-        appartment_id = request.POST.get('appartment_id')
-        user_rating = float(request.POST.get('rating'))
+# def rate_appartment(request):
+#     if request.method == 'POST':
+#         user_id = request.POST.get('user_id')
+#         appartment_id = request.POST.get('appartment_id')
+#         user_rating = float(request.POST.get('rating'))
 
-        try:
-            user = User.objects.get(id=user_id)
-            appartment = Appartment.objects.get(id=appartment_id)
+#         try:
+#             user = User.objects.get(id=user_id)
+#             appartment = Appartment.objects.get(id=appartment_id)
 
-            # Check if the user has already rated this apartment
-            try:
-                estimation = Estimation.objects.get(user=user, appartment=appartment)
-                # Update the existing rating
-                total_votes = estimation.total_votes
-                current_rating = estimation.rating
-                rating_sum = current_rating * total_votes + user_rating
-                total_votes += 1
-                new_average_rating = round(rating_sum / total_votes, 2)
-                estimation.rating = new_average_rating
-                estimation.total_votes = total_votes
-                estimation.save()
-                message = f"New Average Rating: {new_average_rating} Total Votes: {total_votes}"
-            except Estimation.DoesNotExist:
-                # Insert a new rating
-                estimation = Estimation.objects.create(
-                    user=user,
-                    appartment=appartment,
-                    rating=user_rating,
-                    total_votes=1
-                )
-                message = f"Rating {user_rating} has been added for the apartment. Total Votes: 1"
+#             # Check if the user has already rated this apartment
+#             try:
+#                 estimation = Estimation.objects.get(user=user, appartment=appartment)
+#                 # Update the existing rating
+#                 total_votes = estimation.total_votes
+#                 current_rating = estimation.rating
+#                 rating_sum = current_rating * total_votes + user_rating
+#                 total_votes += 1
+#                 new_average_rating = round(rating_sum / total_votes, 2)
+#                 estimation.rating = new_average_rating
+#                 estimation.total_votes = total_votes
+#                 estimation.save()
+#                 message = f"New Average Rating: {new_average_rating} Total Votes: {total_votes}"
+#             except Estimation.DoesNotExist:
+#                 # Insert a new rating
+#                 estimation = Estimation.objects.create(
+#                     user=user,
+#                     appartment=appartment,
+#                     rating=user_rating,
+#                     total_votes=1
+#                 )
+#                 message = f"Rating {user_rating} has been added for the apartment. Total Votes: 1"
 
-            return JsonResponse({'message': message})
+#             return JsonResponse({'message': message})
 
-        except User.DoesNotExist:
-            return JsonResponse({'error': 'User not found'}, status=404)
-        except Appartment.DoesNotExist:
-            return JsonResponse({'error': 'Apartment not found'}, status=404)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
+#         except User.DoesNotExist:
+#             return JsonResponse({'error': 'User not found'}, status=404)
+#         except Appartment.DoesNotExist:
+#             return JsonResponse({'error': 'Apartment not found'}, status=404)
+#     else:
+#         return JsonResponse({'error': 'Invalid request method'}, status=405)
 
- 
+
+# def rate_appartment(request):
+#     if request.method == 'POST':
+#         user = request.user
+#         appartment_id = request.POST.get('appartment_id')
+#         rating = int(request.POST.get('rating'))
+
+#         appartment = Appartment.objects.get(id=appartment_id)
+#         estimation, created = Estimation.objects.get_or_create(user=user, appartment=appartment)
+
+#         estimation.rating = rating
+#         estimation.save()
+
+#         average_rating = Estimation.objects.filter(appartment=appartment).aggregate(models.Avg('rating'))['rating__avg']
+#         total_votes = Estimation.objects.filter(appartment=appartment).count()
+
+#         response_data = {
+#             'average_rating': round(average_rating, 2),
+#             'total_votes': total_votes
+#         }
+#         return JsonResponse(response_data)
+#     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
 def get_appartments(request):
@@ -194,7 +220,36 @@ def send_email(request):
             return redirect('/room')
         else:
             return redirect('/room')
+        
 
+
+
+
+@csrf_exempt
+def submit_rating(request):
+    if request.method == 'POST':
+        appartment_id = request.POST.get('room_id')
+        rating = int(request.POST.get('rating'))
+        user = request.user
+
+        appartment = get_object_or_404(Appartment, id=appartment_id)
+
+        # Check if user has already rated this apartment
+        estimation, created = Estimation.objects.get_or_create(
+            user=user,
+            appartment=appartment,
+            defaults={'rating': rating, 'total_votes': 1}
+        )
+        
+        if not created:
+            # If the user has already rated, update the rating
+            estimation.rating = rating
+            estimation.total_votes += 1  # Increment the total votes count
+            estimation.save()
+
+        return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'error'}, status=400)
 
 def logout(request):
     request.session.clear()
