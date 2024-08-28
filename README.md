@@ -28,6 +28,9 @@ Interested renters can reach out to appartment owners directly via email, foster
 ## Technologies Used  
 ### Frontend:  
 - **HTML, CSS**: Essential for structuring and styling our web application.
+- **JavaScript**: Powers interactivity and enhances the user experience.  
+- **Drift**: Facilitates real-time communication with the website developers through chat integration.
+##
   <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
   <img width="12" />
@@ -39,8 +42,6 @@ Interested renters can reach out to appartment owners directly via email, foster
 </div>
 
 ###
-- **JavaScript**: Powers interactivity and enhances the user experience.  
-- **Drift**: Facilitates real-time communication with the website developers through chat integration.
 
 ### Backend:  
 - **Python**: Handles server-side logic and functionalities.  
