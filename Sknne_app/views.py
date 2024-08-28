@@ -6,30 +6,35 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Estimation, Appartment
 from django.contrib.auth.models import User
-<<<<<<< Updated upstream
 import googlemaps
 from django.conf import settings
-=======
 from django.contrib.auth.decorators import login_required
->>>>>>> Stashed changes
 from django.core.mail import send_mail
 from Sknne_pro.settings import EMAIL_HOST_USER
 
 def home(request):
     if 'id' not in request.session :
-        return render(request, 'owners.html')
+        return render(request, 'index.html')
     else:
         context = {
             'user':models.show_user(id = request.session['id']),
         }
         return render(request, 'city.html', context)
+    
+
+def about_us(request):
+    return render (request , "about.html")
 
 def cities(request):
     if 'id' not in request.session :
         return redirect('/')
     else:
+        apartments = Appartment.objects.all()  # Get all apartments
+        apartment_count = apartments.count()  # Count the number of apartments
         context = {
-            'user': models.show_user(id = request.session['id'])
+            'user': models.show_user(id = request.session['id']),
+            'apartments': apartments,
+            'apartment_count': apartment_count,
         }
         return render(request, 'city.html', context)
 
@@ -175,6 +180,8 @@ def show_appartments(request):
         #all_appartments = all_appartments[:2]
         context = {
             "city": models.show_city(name = request.session['city']),
+            
+
         }
         return render(request , 'appartments.html' , context)
 
@@ -228,7 +235,7 @@ def send_email(request):
 @csrf_exempt
 def submit_rating(request):
     if request.method == 'POST':
-        appartment_id = request.POST.get('room_id')
+        appartment_id = request.session['room_id']
         rating = int(request.POST.get('rating'))
         user = request.user
 
@@ -282,3 +289,5 @@ class GeoCodingView(View):
             'place_id': place_id
         }
         return context
+
+

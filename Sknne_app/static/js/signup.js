@@ -300,3 +300,48 @@ $(document).ready(function () {
         })
     })
 });*/
+function initMap() {
+    let map;
+    var locations = {{ locations| safe}};
+var infoWindow = [];
+map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: locations[0].latitude, lng: locations[0].longitude },
+    zoom: 12
+})
+locations.forEach(function (location) {
+    var marker = new google.maps.Marker({
+        position: { lat: location.latitude, lng: location.longitude },
+        map: map,
+        title: location.name
+    })
+    var infowindow = new google.maps.InfoWindow({
+        content: location.name
+    });
+    infoWindow.push(infowindow);
+    marker.addListener('click', function () {
+        infoWindow.forEach(function (iw) {
+            iw.close();
+        });
+        infowindow.open(map, marker);
+    });
+});
+}
+window.initMap = initMap
+
+"use strict";
+
+!function () {
+    var t = window.driftt = window.drift = window.driftt || [];
+    if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+            t.factory = function (e) {
+                return function () {
+                    var n = Array.prototype.slice.call(arguments);
+                    return n.unshift(e), t.push(n), t;
+                };
+            }
+    } ();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('g6s3dpwhnudz');
+}

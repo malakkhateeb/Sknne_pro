@@ -70,6 +70,7 @@ class Appartment(models.Model):
     longitude = models.TextField(default="")
     latitude = models.TextField(default="")
     place_id = models.TextField(default="")
+    image = models.ImageField(upload_to='appartment_images/') 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
