@@ -38,17 +38,19 @@ Interested renters can reach out to appartment owners directly via email, foster
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
 </div>
-###
+##
 
 ### Backend:  
 - **Python**: Handles server-side logic and functionalities.  
 - **API Integration**: Used for Google Maps to display appartment locations.  
 - **AJAX**: Ensures smooth, asynchronous data loading for login/registration and other features.
-##
-![AJAX](https://img.shields.io/badge/AJAX-FF7800?style=for-the-badge)
-![API](https://img.shields.io/badge/API-0298C3?style=for-the-badge)
+  
 ##
 
+![AJAX](https://img.shields.io/badge/AJAX-FF7800?style=for-the-badge)
+![API](https://img.shields.io/badge/API-0298C3?style=for-the-badge)
+
+##
 
 ### Database  
 - **MySQL**: Stores user data, appartment listings, and reviews.
