@@ -335,3 +335,6 @@ def submit_apartment(request):
             return redirect('/')
         else:
             return redirect('/')
+        
+def add_appartment_owner(request):
+    return render (request, 'owners.html')

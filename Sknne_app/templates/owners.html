@@ -43,149 +43,255 @@
             input::placeholder, 
             input:focus::placeholder,
             input:hover::placeholder {
-                color: gray;
+                color: rgb(138, 21, 21);
                 transition: color 0.3s ease;
             }
     
-            /* Change placeholder color to light blue on input focus */
-            input:focus::placeholder {
-                color: lightblue;
-            }
     
             /* Change placeholder color to light blue on input hover */
             input:hover::placeholder {
-                color: lightblue;
+                color: rgb(184, 203, 209);
             }
             
             /* Basic hover effect for inputs */
             input:hover {
-                border-color: lightblue;
+                border-color: rgb(2, 15, 20);
             }
              /* Style for the submit button */
         .btn-submit {
-            background-color: black;
+            position: relative;
+            left: 60px;
+            background-color: rgb(81, 86, 96);
             color: white;
-            padding: 10px 20px;
+            padding: 10px 10px;
             border: none;
+            
             border-radius: 4px;
             transition: all 0.3s ease;
         }
+        /* Container for the form */
+        .pxp-hero-caption {
+            margin-top: 30px;
+            padding: 20px;
+            width: 100%;
+        }
 
-        /* Hover effect for the submit button */
-        .btn-submit:hover {
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-            background-color: black;
+        /* Form title styling */
+        .form-title {
+            margin-top: 2px;
+            font-size: 1.5rem; /* Slightly smaller */
+            font-weight: bold;
             color: white;
-            transform: translateY(-2px);
+        }
+
+        /* Form popup animation */
+        .form-popup {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: pop-in 0.5s forwards;
+        }
+
+        @keyframes pop-in {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form group styling */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-row label {
+            flex: 1;
+            color: white; /* Label color */
+            text-align: left; /* Align label text to the right */
+        }
+
+        .form-row input {
+            flex: 2;
+            background-color: rgba(255, 255, 255, 0.8); /* Background color for inputs */
+            border: 2px solid black;
+            margin-right: 2px;
+            padding: 0.75rem; /* Increased padding for larger input height */
+            border-radius: 0.25rem;
+            width: 100%; /* Make input width responsive to container */
+            max-width: 100%; /* Ensure inputs do not overflow their container */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+        .col-form-label {
+            font-weight: normal; /* Removes bold from labels */
         }
     </style>
 </head>
 
 <body>
+    <script>
+        "use strict";
+
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('g6s3dpwhnudz');
+    </script>
     <!-- Header and Navbar -->
     <div class="pxp-header fixed-top pxp-animate">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-5 col-md-2">
-                    <a id="title" href="#" class="pxp-logo text-decoration-none">Sknne</a>
+                    <a id="title" href="#" class="pxp-logo text-decoration-none ">Sknne</a>
                 </div>
                 <div class="col-2 col-md-8 text-center">
                     <ul class="pxp-nav list-inline">
-                        <li class="list-inline-item"><a id="h1" href="/">Home</a></li>
-                        <li class="list-inline-item"><a id="h1" href="#">Properties</a>
+                        <li class="list-inline-item">
+                            <a id="h1" href="/">Home</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Cities</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Themes</a>
                             <ul class="pxp-nav-sub rounded-lg">
-                                <li><a href="properties.html">All Properties</a></li>
-                                <li><a href="single-property.html">Single Property</a></li>
+                                <li><a href="../light/index.html">Light</a></li>
+                                <li><a href="../dark/index.html">Dark</a></li>
                             </ul>
                         </li>
-                        <li class="list-inline-item"><a id="h1" href="#">Agents</a>
-                            <ul class="pxp-nav-sub rounded-lg">
-                                <li><a href="agents.html">All Agents</a></li>
-                                <li><a href="single-agent.html">Single Agent</a></li>
-                            </ul>
+                        <li class="list-inline-item pxp-is-last"><a id="h1" href="/about">About Us</a></li>
+                        <li class="list-inline-item pxp-is-last"><a id="h1" href="/add_apartment">Join Us</a></li>
+                        <li class="list-inline-item pxp-has-btns">
+                            <div class="pxp-user-btns">
+                                <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
+                                <a href="#" class="pxp-user-btns-login pxp-signin-trigger">Sign In</a>
+                            </div>
                         </li>
-                        <li class="list-inline-item pxp-is-last"><a id="h1" href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-5 col-md-2 text-right">
                     <a href="javascript:void(0);" class="pxp-header-nav-trigger"><span class="fa fa-bars"></span></a>
-                    <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span class="fa fa-user-o"></span></a>
+                    <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span
+                            class="fa fa-user-o"></span></a>
                 </div>
             </div>
         </div>
     </div>
     <div class="pxp-hero vh-100">
         <div class="pxp-hero-bg pxp-cover pxp-cover-bottom"
-            style="background-image: url('{% static 'images/d12-home-hero-1920x1280.jpg' %}');"></div>
+            style="background-image: url('{% static 'images/photo-1713283391486-b92cda2562e8.avif' %}');"></div>
         <div class="pxp-hero-opacity"></div>
         <div class="pxp-hero-caption">
-            <div class="container">
+            <div class="container mt-5 pt-5">
+                <div class="row justify-content-start">
+                    <h2 class="form-title">Add Your Appartment info:</h2>
+                    <div class="col-md-8">
+
+                        <form id="apartment_form" action="/submit_apartment" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <!-- City Name -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="city_name" class="col-form-label">City: </label>
+                                    <input type="text" name="city_name" class="form-control" id="city_name" placeholder="Enter the city name" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Building Name -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="building_name" class="col-form-label">Building: </label>
+                                    <input type="text" name="building_name" class="form-control" id="building_name" placeholder="Enter the building name" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Address -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="address" class="col-form-label">Address: </label>
+                                    <input type="text" name="address" class="form-control" id="address" placeholder="Enter the Address here" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Number of Rooms -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="number_of_rooms" class="col-form-label">Number of Rooms: </label>
+                                    <input type="number" name="number_of_rooms" class="form-control" id="number_of_rooms" placeholder="Enter the number of rooms" required>
+                                </div>
+                            </div>
+                            <!-- price -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="price_appartment" class="col-form-label">Price: </label>
+                                    <input type="text" name="price" class="form-control" id="price_appartment" placeholder="Enter the price of appartment" required>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- Contact Number -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="contact_number" class="col-form-label">Contact Number: </label>
+                                    <input type="tel" name="contact_number" class="form-control" id="contact_number" placeholder="Enter your contact number" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Upload Photos -->
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label for="apartment_photos" class="col-form-label">Upload Apartment Photos: </label>
+                                    <input type="file" name="apartment_photos[]" class="form-control-file" id="apartment_photos" multiple required>
+                                </div>
+                            </div>
+                    
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <button class="btn-submit" type="submit">Submit Apartment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
+    
 
     <!-- Form Section -->
-    <div class="container mt-5 pt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center">Submit Your Apartment</h2>
-                <form id="apartment_form" action="/submit_apartment" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    
-                    <!-- City Name -->
-                    <div class="form-group">
-                        <label for="city_name">City Name</label>
-                        <input type="text" name="city_name" class="form-control" id="city_name" placeholder="Enter the city name" required>
-                    </div>
-                    
-                    <!-- Building Name -->
-                    <div class="form-group">
-                        <label for="building_name">Building Name</label>
-                        <input type="text" name="building_name" class="form-control" id="building_name" placeholder="Enter the building name" required>
-                    </div>
-                    
-                    <!-- Street Name -->
-                    <div class="form-group">
-                        <label for="street_name"> Address </label>
-                        <input type="text" name="address" class="form-control" id="adress" placeholder="Enter the Address here" required>
-                    </div>
-                    
-                    <!-- Number of Rooms -->
-                    <div class="form-group">
-                        <label for="number_of_rooms">Number of Rooms</label>
-                        <input type="number" name="number_of_rooms" class="form-control" id="number_of_rooms" placeholder="Enter the number of rooms" required>
-                    </div>
-                    
-                    <!-- Contact Number -->
-                    <div class="form-group">
-                        <label for="contact_number">Contact Number</label>
-                        <input type="tel" name="contact_number" class="form-control" id="contact_number" placeholder="Enter your contact number" required>
-                    </div>
-                    
-                    <!-- Upload Photos -->
-                    <div class="form-group">
-                        <label for="apartment_photos">Upload Apartment Photos</label>
-                        <input type="file" name="apartment_photos[]" class="form-control-file" id="apartment_photos" multiple required>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-group text-center">
-                        <button class="btn-submit" type="submit">Submit Apartment</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+   
     <!-- Footer -->
-    <div class="pxp-footer pt-100 pb-100 mt-100">
+    <!-- <div class="pxp-footer pt-100 pb-100 mt-100">
         <div class="container">
             <div class="pxp-footer-bottom mt-2">
                 <div><a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></div>
                 <div class="pxp-footer-copyright">&copy; Resideo. All Rights Reserved. 2021</div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <div class="modal fade" id="pxp-signin-modal" tabindex="-1" role="dialog" aria-labelledby="pxpSigninModal"
     aria-hidden="true">
