@@ -27,7 +27,18 @@ Interested renters can reach out to appartment owners directly via email, foster
 
 ## Technologies Used  
 ### Frontend:  
-- **HTML, CSS**: Essential for structuring and styling our web application.  
+- **HTML, CSS**: Essential for structuring and styling our web application.
+  <div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" alt="python logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+</div>
+
+###
 - **JavaScript**: Powers interactivity and enhances the user experience.  
 - **Drift**: Facilitates real-time communication with the website developers through chat integration.
 
