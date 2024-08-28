@@ -80,10 +80,11 @@
                 <div class="col-5 col-md-2">
                     <a id="title" href="#" class="pxp-logo text-decoration-none ">Sknne</a>
                 </div>
+                {%if request.session.id == None %}
                 <div class="col-2 col-md-8 text-center">
                     <ul class="pxp-nav list-inline">
                         <li class="list-inline-item">
-                            <a id="h1" href="/">Home</a>
+                            <a id="h1" href="#">Home</a>
                         </li>
                         <li class="list-inline-item">
                             <a id="h1" href="#">Cities</a>
@@ -109,6 +110,37 @@
                     <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span
                             class="fa fa-user-o"></span></a>
                 </div>
+                {%else%}
+                <div class="col-2 col-md-8 text-center">
+                    <ul class="pxp-nav list-inline">
+                        <li class="list-inline-item">
+                            <a id="h1" href="/">Home</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="h1" href="/cities">Cities</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="h1" href="#">Themes</a>
+                            <ul class="pxp-nav-sub rounded-lg">
+                                <li><a href="../light/index.html">Light</a></li>
+                                <li><a href="../dark/index.html">Dark</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-inline-item pxp-is-last"><a id="h1" href="contact.html">Contact Us</a></li>
+                        <li class="list-inline-item pxp-has-btns">
+                            <div class="pxp-user-btns">
+                                <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
+                                <a href="#" class="pxp-user-btns-login pxp-signin-trigger">Sign In</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-2 text-right">
+                    <a href="javascript:void(0);" class="pxp-header-nav-trigger"><span class="fa fa-bars"></span></a>
+                    <a href="javascript:void(0);" class="pxp-header-user pxp-signin-trigger"><span
+                            class="fa fa-user-o"></span></a>
+                </div>
+                {%endif%}
             </div>
         </div>
     </div>
@@ -346,17 +378,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    {%if request.session.id == None %}
                     <div class="modal-body">
                         <h5 class="modal-title" id="pxpSigninModal">Welcome back!</h5>
-                        {%if messages%}
-                        <ul id="messages" class="messages">
-                            {% for message in messages %}
-                            {% if 'warning' in message.tags %}
-                            <li {% if message.tags %} id="msg" class="{{ message.tags}}" {% endif %}>{{message}}</li>
-                            {%endif%}
-                            {%endfor%}
-                        </ul>
-                        {%endif%}
                         <form id="login_form" class="mt-4" action="/login"  method="post">
                             {%csrf_token%}
                             <div class="form-group">
@@ -383,6 +407,18 @@
                             </div>
                         </form>
                     </div>
+                    {%else%}
+                    <div class="modal-body">
+                        <div class="align-items-center my-2 text-center">
+                            <h2>Logout, {{request.session.name}}</h2>
+                            <p>After logging out of the system you will still be able to access dashbord</p>
+                            <form action="/logout" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Log Out" name="logout" class="btn btn-sm btn-danger">
+                            </form>
+                        </div>
+                    </div>
+                    {%endif%}
                 </div>
             </div>
         </div>
@@ -396,6 +432,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    {%if request.session.id == None %}
                     <div class="modal-body">
                         <h5 class="modal-title" id="pxpSignupModal">Create an account</h5>                        
                         <form action="/signup" class="mt-4" id="signup_form" method="post">
@@ -451,6 +488,8 @@
                             </div>
                         </form>
                     </div>
+                    {%else%}
+                    {%endif%}
                 </div>
             </div>
         </div>

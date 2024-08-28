@@ -15,4 +15,5 @@ urlpatterns = [
     path('room' , views.show_room),
     path('email' , views.send_email),
     path('submit-rating', views.submit_rating, name='submit_rating'),
+    path('submit_apartment' , views.submit_apartment)
 ]
