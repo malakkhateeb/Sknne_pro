@@ -71,6 +71,8 @@ class Appartment(models.Model):
     latitude = models.TextField(default="")
     place_id = models.TextField(default="")
     image = models.ImageField(upload_to='appartment_images/') 
+    rating = models.FloatField(default=0)
+    total_votes = models.FloatField(default=0) 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
@@ -78,15 +80,13 @@ class Appartment(models.Model):
 
 class Image(models.Model):
     appartment = models.ForeignKey(Appartment , related_name='images' , on_delete=models.CASCADE)
-    images = models.ImageField(upload_to='images/')
+    images = models.FileField(upload_to='static/appartments/images')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class Estimation(models.Model):
-    user = models.ForeignKey(User,related_name='rating', on_delete=models.CASCADE)
-    appartment = models.ForeignKey(Appartment,related_name='rating' , on_delete=models.CASCADE)
-    rating = models.IntegerField()
-    total_votes = models.FloatField(default=0)  # Added to track votes
+    user = models.ForeignKey(User,related_name='estimation', on_delete=models.CASCADE)
+    appartment = models.ForeignKey(Appartment,related_name='estimation' , on_delete=models.CASCADE) # Added to track votes
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
@@ -103,6 +103,7 @@ def create_user(first_name , last_name , email , password , phone_number):
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
     return User.objects.create(first_name = first_name , last_name = last_name , email = email ,password = pw_hash ,  phone_number = phone_number)
 
+
 def show_city(name):
     return City.objects.get(name = name)
 
@@ -112,3 +113,18 @@ def show_room(id):
 def room_owner(id):
     room = Appartment.objects.get(id=id)
     return room.owner.id
+
+def check_estimation(user_id , appartment_id):
+    if Estimation.objects.filter(user_id = user_id , appartment_id = appartment_id).exists() == True : 
+        return True
+    else:   
+        return False
+
+def estimation( user , appartment ):
+    return Estimation.objects.create( user = user , appartment = appartment )
+
+def vote(id , rating):
+    room = show_room(id=id)
+    room.total_votes = (float(room.total_votes)+1)
+    room.rating = (((float(room.rating) + float(rating))/(float(room.total_votes))))
+    return room.save()

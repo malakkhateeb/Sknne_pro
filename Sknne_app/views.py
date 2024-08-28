@@ -10,7 +10,9 @@ import googlemaps
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from Sknne_pro.settings import EMAIL_HOST_USER
+import json 
 
 def home(request):
     if 'id' not in request.session :
@@ -24,6 +26,7 @@ def home(request):
 
 def about_us(request):
     return render (request , "about.html")
+
 
 def cities(request):
     if 'id' not in request.session :
@@ -86,7 +89,7 @@ def login(request):
             user = models.view_user(email=request.POST['email'])
             request.session['id'] = user.id
             request.session['name'] = user.first_name
-            return redirect('/cities')
+            return redirect('/')
     else:
         return redirect('/')
 
@@ -175,7 +178,7 @@ def get_appartments(request):
 
 def show_appartments(request):
     if 'city' not in request.session : 
-        return redirect('')
+        return redirect('/')
     else:
         #all_appartments = all_appartments[:2]
         context = {
@@ -206,6 +209,7 @@ def show_room(request):
         locations.append(location)
         context = {
             "room": models.show_room(id = request.session['room_id']),
+            "vote":models.check_estimation(user_id = request.session['id'] , appartment_id = request.session['room_id'] ),  
             "locations":locations,
             'place_id':  geoCodingInformaion['place_id'],
             'key': settings.GOOGLE_API_KEY,
@@ -227,36 +231,52 @@ def send_email(request):
             return redirect('/room')
         else:
             return redirect('/room')
-        
 
 
 
-
-@csrf_exempt
 def submit_rating(request):
-    if request.method == 'POST':
-        appartment_id = request.session['room_id']
-        rating = int(request.POST.get('rating'))
-        user = request.user
+    models.estimation( user = models.show_user(id = request.session['id']) , appartment=models.show_room(id = request.session['room_id']) )
+    models.vote(id = request.session['room_id'] , rating = request.POST['rating'])
+    request.session['vote'] = 1 
+    return redirect('/room')
+#     try:
+#         # Load JSON data from the request body
+#         data = json.loads(request.body)
+#         rating = data.get('rating')
+#         room_id = request.session.get('room_id')  # Ensure room_id is stored in the session
 
-        appartment = get_object_or_404(Appartment, id=appartment_id)
+#             # Validate and save the rating
+#         if rating and room_id:
+#                 # Assuming Estimation is your model
+#             models.estimation(rating=rating, id=room_id , user = models.show_user(id = request.session['id'] , total_votes = 1 , appartment = models.show_room(id = request.session['room_id'])))  
+#             return JsonResponse({'status': 'success', 'message': 'Rating submitted successfully'})
+#     except:
+#         return redirect('/')
+# @csrf_exempt
+# def submit_rating(request):
+#     if request.method == 'POST':
+#         appartment_id = request.session['room_id']
+#         rating = int(request.POST.get('rating'))
+#         user = request.user
 
-        # Check if user has already rated this apartment
-        estimation, created = Estimation.objects.get_or_create(
-            user=user,
-            appartment=appartment,
-            defaults={'rating': rating, 'total_votes': 1}
-        )
+#         appartment = get_object_or_404(Appartment, id=appartment_id)
+
+#         # Check if user has already rated this apartment
+#         estimation, created = Estimation.objects.get_or_create(
+#             user=user,
+#             appartment=models.show_room(id = request.session['room_id']),
+#             defaults={'rating': rating, 'total_votes': 1}
+#         )
         
-        if not created:
-            # If the user has already rated, update the rating
-            estimation.rating = rating
-            estimation.total_votes += 1  # Increment the total votes count
-            estimation.save()
+#         if not created:
+#             # If the user has already rated, update the rating
+#             estimation.rating = rating
+#             estimation.total_votes += 1  # Increment the total votes count
+#             estimation.save()
 
-        return JsonResponse({'status': 'success'})
+#         return JsonResponse({'status': 'success'})
 
-    return JsonResponse({'status': 'error'}, status=400)
+#     return JsonResponse({'status': 'error'}, status=400)
 
 def logout(request):
     request.session.clear()
@@ -291,3 +311,27 @@ class GeoCodingView(View):
         return context
 
 
+def submit_apartment(request):
+    if 'id' not in request.session : 
+        return redirect('/')
+    else:
+        if request.method == 'POST':
+            user = models.show_user(id = request.session['id'])
+            # file = request.FILES.get('apartment_photos[]')
+            message = f" Name : {user.first_name} {user.last_name} {"\n"} Email: {user.email} {"\n"} Phone: {request.POST['contact_number']} {"\n"} City : {request.POST['city_name']} {"\n"} Building Name : {request.POST['building_name']}{"\n"} Street Name: {request.POST['street_name']}{"\n"} Number Of Rooms : {request.POST['number_of_rooms']} {"\n"} "
+            email1 = 'sknne.palestine@gmail.com'
+            recipient_list = [email1]
+            email = EmailMessage(
+                "New Appartment Submission Request",
+                f"{message}",
+                'New Request ',
+                # settings.EMAIL_HOST_USER,
+                (f"{email1}",)
+            )
+            for file in request.FILES.getlist('apartment_photos[]'):
+                email.attach(file.name, file.read(), file.content_type)
+            email.send()
+            # send_mail(subject , message , "New Request" , recipient_list , fail_silently=True)
+            return redirect('/')
+        else:
+            return redirect('/')

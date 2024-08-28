@@ -18,4 +18,7 @@ urlpatterns = [
     path('email' , views.send_email),
     path('submit-rating', views.submit_rating, name='submit_rating'),
     path('about', views.about_us),
+    path('submit_apartment' , views.submit_apartment)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+
