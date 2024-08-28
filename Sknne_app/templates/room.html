@@ -12,37 +12,6 @@
     <link rel="stylesheet" href="/static/css/default-skin/default-skin.css">
     <link rel="stylesheet" href="/static/css/style.css?sadswq">
     <title>Sknne</title>
-    <style>
-        .rating-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .rating-text {
-            font-size: 18px;
-            margin-right: 10px;
-        }
-        .rating-form {
-            display: flex;
-            align-items: center;
-        }
-        .rating-form input[type="radio"] {
-            display: none;
-        }
-        .fa-star {
-            font-size: 24px; /* Adjusted size */
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .fa-star.checked {
-            color: #f39c12;
-        }
-        .fa-star:hover, .fa-star:hover ~ .fa-star {
-            color: #f39c12;
-        }
-    </style>
 </head>
 
 <body>
@@ -274,23 +243,32 @@
                     <div class="pxp-single-property-section mt-4 mt-md-5">
                     </div>
                 </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="pxp-single-property-section pxp-sp-agent-section mt-4 mt-md-5 mt-lg-0">
-                        <h3>Listed By</h3>
-                        <div class="pxp-sp-agent mt-3 mt-md-4">
-                            <a href="single-agent.html" class="pxp-sp-agent-fig pxp-cover rounded-lg"
-                            style="background-image: url('/static/images/user-profile-icon-free-vector.jpg'); background-position: top center"></a>
-                            <div class="pxp-sp-agent-info">
-                                <div class="pxp-sp-agent-info-name"><a
-                                        href="single-agent.html">{{room.owner.first_name}}{{' '}}{{room.owner.last_name}}</a></div>
-                                <div class="pxp-sp-agent-info-rating"><span class="fa fa-star"></span><span
-                                        class="fa fa-star"></span><span class="fa fa-star"></span><span
-                                        class="fa fa-star"></span><span class="fa fa-star"></span></div>
-                                <div class="pxp-sp-agent-info-email"><a
-                                        href="{{room.owner.email}}">{{room.owner.email}}</a></div>
-                                <div class="pxp-sp-agent-info-phone"><span
-                                        class="fa fa-phone"></span>{{room.owner.phone_number}}</div>
+                    <div class="col-lg-4">
+                        <div class="pxp-single-property-section pxp-sp-agent-section mt-4 mt-md-5 mt-lg-0">
+                            <h3>Listed By</h3>
+                            <div class="pxp-sp-agent mt-3 mt-md-4">
+                                <a href="single-agent.html" class="pxp-sp-agent-fig pxp-cover rounded-lg"
+                                    style="background-image: url(images/agent-4.jpg); background-position: top center"></a>
+                                <div class="pxp-sp-agent-info">
+                                    <div class="pxp-sp-agent-info-name"><a
+                                            href="single-agent.html">{{room.owner.first_name}}{{' '}}{{room.owner.last_name}}</a></div>
+                                    <div class="pxp-sp-agent-info-rating"><span class="fa fa-star"></span><span
+                                            class="fa fa-star"></span><span class="fa fa-star"></span><span
+                                            class="fa fa-star"></span><span class="fa fa-star"></span></div>
+                                    <div class="pxp-sp-agent-info-email"><a
+                                            href="{{room.owner.email}}">{{room.owner.email}}</a></div>
+                                    <div class="pxp-sp-agent-info-phone"><span
+                                            class="fa fa-phone"></span>{{room.owner.phone_number}}</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="pxp-sp-agent-btns mt-3 mt-md-4">
+                                    <a href="#pxp-contact-agent" class="pxp-sp-agent-btn-main" data-toggle="modal"
+                                        data-target="#pxp-contact-agent"><span class="fa fa-envelope-o"></span> Contact
+                                        Agent</a>
+                                    <a href="#pxp-contact-agent" class="pxp-sp-agent-btn" data-toggle="modal"
+                                        data-target="#pxp-contact-agent"><span class="fa fa-calendar-check-o"></span>
+                                        Request Tour</a>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="pxp-sp-agent-btns mt-3 mt-md-4">
@@ -558,4 +536,5 @@
         <script async src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>
         <script src="/static/js/star.js"></script>
 </body>
+
 </html>
