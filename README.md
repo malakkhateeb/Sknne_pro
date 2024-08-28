@@ -53,6 +53,9 @@ Interested renters can reach out to appartment owners directly via email, foster
 
 ### Database  
 - **MySQL**: Stores user data, appartment listings, and reviews.
+##
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
 
 ## Requirements  
 ### User Roles:  
