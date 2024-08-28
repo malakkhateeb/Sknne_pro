@@ -63,7 +63,7 @@ Interested renters can reach out to appartment owners directly via email, foster
 
 ## Dashboard  
 ### Availability:  
-Accessible by both renters and property owners.
+Accessible by renters 
 
 ### Features:  
 - View all available cities and appartment listings.  
