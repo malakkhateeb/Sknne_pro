@@ -249,10 +249,14 @@ def send_email(request):
 
 
 def submit_rating(request):
-    models.estimation( user = models.show_user(id = request.session['id']) , appartment=models.show_room(id = request.session['room_id']) )
-    models.vote(id = request.session['room_id'] , rating = request.POST['rating'])
-    request.session['vote'] = 1 
-    return redirect('/room')
+    if request.method == 'POST':
+        rating = request.POST['rating']
+        models.estimation( user = models.show_user(id = request.session['id']) , appartment=models.show_room(id = request.session['room_id']) )
+        models.vote(id = request.session['room_id'] , rating = rating )
+        return redirect('/room')
+    else: 
+        return redirect("/room")
+
 #     try:
 #         # Load JSON data from the request body
 #         data = json.loads(request.body)
@@ -331,7 +335,7 @@ def submit_apartment(request):
         if request.method == 'POST':
             user = models.show_user(id = request.session['id'])
             # file = request.FILES.get('apartment_photos[]')
-            message = f" Name : {user.first_name} {user.last_name} {"\n"} Email: {user.email} {"\n"} Phone: {request.POST['contact_number']} {"\n"} City : {request.POST['city_name']} {"\n"} Building Name : {request.POST['building_name']}{"\n"} Street Name: {request.POST['street_name']}{"\n"} Number Of Rooms : {request.POST['number_of_rooms']} {"\n"} "
+            message = f" Name : {user.first_name} {user.last_name} {"\n"} Email: {user.email} {"\n"} Phone: {request.POST['contact_number']} {"\n"} City : {request.POST['city_name']} {"\n"} Building Name : {request.POST['building_name']}{"\n"} Address: {request.POST['address']}{"\n"} Number Of Rooms : {request.POST['number_of_rooms']} {"\n"} Asking Prcie : {request.POST['price']}$ {"\n"}{"\n"}"
             email1 = 'sknne.palestine@gmail.com'
             recipient_list = [email1]
             email = EmailMessage(

@@ -83,8 +83,8 @@ class Appartment(models.Model):
     latitude = models.TextField(default="")
     place_id = models.TextField(default="")
     image = models.ImageField(upload_to='appartment_images/') 
-    rating = models.FloatField(default=0)
-    total_votes = models.FloatField(default=0) 
+    rating = models.IntegerField(default=0)
+    total_votes = models.IntegerField(default=0) 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
@@ -137,6 +137,6 @@ def estimation( user , appartment ):
 
 def vote(id , rating):
     room = show_room(id=id)
-    room.total_votes = (float(room.total_votes)+1)
-    room.rating = (((float(room.rating) + float(rating))/(float(room.total_votes))))
+    room.total_votes = (int(room.total_votes)+1)
+    room.rating = ((((int(room.rating)/10) + (int(rating))/10)/(int(room.total_votes))))*100
     return room.save()
