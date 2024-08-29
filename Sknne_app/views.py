@@ -203,7 +203,6 @@ def show_room(request):
         universities = models.Univirsity.objects.all()
         appartment = models.show_room(id = request.session['room_id'])
         locations = get_Locations(appartment, request)
-        print("fdfafadfadfda",locations)
         secondlocation = {
             'latitude':'',
             'longitude':'',
