@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render , redirect ,get_object_or_404
 from django.contrib import messages
 from django.views import View 
@@ -199,22 +200,35 @@ def show_room(request):
     if 'room_id' not in request.session : 
         return redirect('/')
     else:
-        geoCodingInformaion = GeoCodingView.getGeoCodingInfo(request)
-        locations = []
-        location = {
-            'latitude':float(geoCodingInformaion['latitude']),
-            'longitude':float(geoCodingInformaion['longitude']),
-            'name':models.show_room(id = request.session['room_id']).building_name
-        }
-        locations.append(location)
+        universities = models.Univirsity.objects.all()
+        appartment = models.show_room(id = request.session['room_id'])
+        locations = get_Locations(appartment, request)
+        secondlocation = {
+            'latitude':'',
+            'longitude':'',
+            'name':''}
         context = {
-            "room": models.show_room(id = request.session['room_id']),
+            "secondlocation":secondlocation,
+            "room": appartment,
             "vote":models.check_estimation(user_id = request.session['id'] , appartment_id = request.session['room_id'] ),  
-            "locations":locations,
-            'place_id':  geoCodingInformaion['place_id'],
+            "locations":locations[0],
+            'place_id':  appartment.place_id,
             'key': settings.GOOGLE_API_KEY,
+            "universities": universities,
         }
         return render(request , 'room.html' , context)
+    
+def get_Locations(appartment,request):
+    geoCodingInformaion = GeoCodingView.getGeoCodingInfo(request)
+    locations = []
+    location = {
+        'latitude':float(geoCodingInformaion['latitude']),
+        'longitude':float(geoCodingInformaion['longitude']),
+        'name':appartment.building_name
+    }
+    locations.append(location)
+    
+    return locations
 
 def send_email(request):
     if 'id' not in request.session : 
@@ -235,10 +249,14 @@ def send_email(request):
 
 
 def submit_rating(request):
-    models.estimation( user = models.show_user(id = request.session['id']) , appartment=models.show_room(id = request.session['room_id']) )
-    models.vote(id = request.session['room_id'] , rating = request.POST['rating'])
-    request.session['vote'] = 1 
-    return redirect('/room')
+    if request.method == 'POST':
+        rating = request.POST['rating']
+        models.estimation( user = models.show_user(id = request.session['id']) , appartment=models.show_room(id = request.session['room_id']) )
+        models.vote(id = request.session['room_id'] , rating = rating )
+        return redirect('/room')
+    else: 
+        return redirect("/room")
+
 #     try:
 #         # Load JSON data from the request body
 #         data = json.loads(request.body)
@@ -283,7 +301,6 @@ def logout(request):
     return redirect('/')
 
 class GeoCodingView(View):
-
     def getGeoCodingInfo(request):
         appartment = models.show_room(id = request.session['room_id'])
         if appartment.longitude and appartment.latitude and appartment.place_id != None:
@@ -318,7 +335,7 @@ def submit_apartment(request):
         if request.method == 'POST':
             user = models.show_user(id = request.session['id'])
             # file = request.FILES.get('apartment_photos[]')
-            message = f" Name : {user.first_name} {user.last_name} {"\n"} Email: {user.email} {"\n"} Phone: {request.POST['contact_number']} {"\n"} City : {request.POST['city_name']} {"\n"} Building Name : {request.POST['building_name']}{"\n"} Street Name: {request.POST['street_name']}{"\n"} Number Of Rooms : {request.POST['number_of_rooms']} {"\n"} "
+            message = f" Name : {user.first_name} {user.last_name} {"\n"} Email: {user.email} {"\n"} Phone: {request.POST['contact_number']} {"\n"} City : {request.POST['city_name']} {"\n"} Building Name : {request.POST['building_name']}{"\n"} Address: {request.POST['address']}{"\n"} Number Of Rooms : {request.POST['number_of_rooms']} {"\n"} Asking Prcie : {request.POST['price']}$ {"\n"}{"\n"}"
             email1 = 'sknne.palestine@gmail.com'
             recipient_list = [email1]
             email = EmailMessage(
@@ -338,3 +355,45 @@ def submit_apartment(request):
         
 def add_appartment_owner(request):
     return render (request, 'owners.html')
+def show_distance(request):
+    if request.method == 'POST':
+        request.session['university'] = request.POST['university']
+        request.session['transportation'] = request.POST['transportation']
+    now = datetime.now()
+    universities = models.Univirsity.objects.all()
+    appartment = models.show_room(id = request.session['room_id'])
+    university = models.Univirsity.objects.get(id = request.session['university'])
+    city = appartment.city
+    from_address_string = str(appartment.address) + ", " +  str(city.zip_code) + ", " + str(city.name) + ", Palestine"
+    to_address_string = str(university.address)+ ", " + str(university.city.name) + ", Palestine"
+    gmaps = googlemaps.Client(key=settings.GOOGLE_API_KEY)
+    locations = get_Locations(appartment, request)
+    secondlocation = {
+        'latitude': float(university.latitude),
+        'longitude':float(university.longitude),
+        'name': university.name
+        }
+    result = gmaps.distance_matrix(
+        from_address_string,
+        to_address_string,
+        mode = request.session['transportation'],
+        departure_time = now
+    )
+    distance = result['rows'][0]['elements'][0]['distance']['text']
+    time = result['rows'][0]['elements'][0]['duration']['text']
+    context = {
+        "room": appartment,
+        "locations":locations[0],
+        "secondlocation":secondlocation,
+        "universities": universities,
+        'place_id':  appartment.place_id,
+        'distance': distance,
+        'time': time,
+        'selected_transportation': request.session['transportation'],
+        'selected_university': int(request.session['university']),
+        
+        'key': settings.GOOGLE_API_KEY,
+    }
+    return render(request , 'room.html' , context)
+
+

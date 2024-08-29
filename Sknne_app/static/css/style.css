@@ -51,7 +51,7 @@ Author URI: http://mariusn.com/
  * 1.0 - General
  */
 
-body {
+ body {
     font-family: Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     color: #333;
     -moz-font-feature-settings: 'kern';
@@ -2166,7 +2166,8 @@ a.pxp-areas-carousel-item:hover .pxp-areas-carousel-item-fig {
  */
 
 .pxp-props-carousel-right {
-    padding-left: calc((100% - 1140px) / 2 + 15px);
+    /* padding-left: calc((100% - 1140px) / 2 + 15px); */
+    
     padding-right: 0;
 }
 .pxp-props-carousel-right.pxp-half-bg {
@@ -6360,6 +6361,7 @@ a.pxp-services-tabs-content-item:hover .pxp-services-tabs-content-item-cta {
     }
     .pxp-props-carousel-right {
         padding-left: calc((100% - 720px) / 2 + 15px);
+        
     }
     .pxp-testim-1 {
         padding-left: calc((100% - 720px) / 2 + 15px);

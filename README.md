@@ -1,23 +1,86 @@
-About Us:
+# Sknne Project 
+##
+![Screenshot of Sknne Dashboard](./MALAK.png)
 
-Sknne:
-_________________________________________
 
-Finding the right apartment while studying away from home can be a daunting task. That’s why we’ve created [Sknne]—a comprehensive online platform designed to simplify the apartment search process for students across Palestine.
+## Introduction  
+Welcome to Sknne! We are excited to introduce you to a comprehensive real estate platform designed specifically for students seeking rental appartments across various cities in Palestine. Sknne simplifies the search process, providing users with access to a wide range of apartment listings and empowering owners to list their properties with ease. Our system offers a seamless user experience, making it easier than ever to find, evaluate, and secure student housing.
 
-Our Mission
+## Key Features  
+**Dashboard**:  
+The central hub for users, offering a unified view of all available cities. Upon selecting a city, users can view detailed listings of appartments for rent.
 
-At [Sknne], we aim to make your search for student housing as seamless and stress-free as possible. Our website aggregates listings from property owners throughout multiple cities in Palestine, offering you a one-stop solution to explore and secure your ideal living space.
+**Apartment Listings**:  
+View detailed appartment information, including rental price, location, and amenities. Appartments are presented clearly for users to compare and choose from.
 
-What We Offer:
+**Google Maps Integration**:  
+Each appartment listing includes a map view powered by Google Maps API, allowing users to see the precise location of the appartment.
 
-Extensive Listings: Browse a wide range of available apartments near universities across Palestine. Our platform features detailed information about each listing, including rental costs, amenities, and more, so you can make informed decisions.
-Convenient Communication: Each listing includes a QR code that allows you to easily contact property owners via WhatsApp or other preferred messaging platforms. This ensures quick and direct communication to address your queries and arrange viewings.
-Interactive Chatbot: Our website features an intelligent chatbot ready to assist you with any questions you might have. Whether you need help navigating the site or require more details about a specific apartment, our chatbot is here to help 24/7.
-_______________________________________________
-[ERD](https://github.com/user-attachments/assets/b7d393a1-6fc2-4fa4-b37c-f0f98c578e5b)
+**Add Apartments**:  
+Property owners can add their appartments to the platform, providing details like rent price, amenities, and location.
 
-[Wireframe](https://github.com/user-attachments/files/16764337/New_Project_.2.pdf)
+**Chat & Support**:  
+Users can communicate directly with the website developers via Drift, an integrated chat system.
+
+**Ratings**:  
+Users can rate appartments, helping others make informed decisions based on feedback.
+
+**Contact Owners**:  
+Interested renters can reach out to appartment owners directly via email, fostering smooth communication.
+
+## Technologies Used  
+### Frontend:  
+- **HTML, CSS**: Essential for structuring and styling our web application.
+- **JavaScript**: Powers interactivity and enhances the user experience.  
+- **Drift**: Facilitates real-time communication with the website developers through chat integration.
+##
+  <div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+</div>
+
+
+### Backend:  
+- **Python**: Handles server-side logic and functionalities.  
+- **API Integration**: Used for Google Maps to display appartment locations.  
+- **AJAX**: Ensures smooth, asynchronous data loading for login/registration and other features.
+  
+##
+
+![AJAX](https://img.shields.io/badge/AJAX-FF7800?style=for-the-badge)
+![API](https://img.shields.io/badge/API-0298C3?style=for-the-badge)
+
+
+### Database  
+- **MySQL**: Stores user data, appartment listings, and reviews.
+##
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+
+## Requirements  
+### User Roles:  
+- **Renters**: Can log in, browse cities, view apartment listings, and contact owners, Can log in to add appartments
+
+## Dashboard  
+### Availability:  
+Accessible by renters 
+
+### Features:  
+- View all available cities and appartment listings.  
+- Add new appartments, update details, and track rental interest.  
+- Rate and review apartments based on personal experience.
+
+## UI/UX  
+### Framework Used:  
+- Responsive design is achieved using standard HTML and CSS, ensuring ease of navigation on both mobile and desktop devices.
+
+### Interface Design:  
+- The interface is built with simplicity in mind, providing users with an easy-to-navigate experience when searching for appartments or listing properties.
+
+
 
 
 
