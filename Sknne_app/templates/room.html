@@ -75,39 +75,57 @@
     drift.load('g6s3dpwhnudz');
     </script>
     <!-- End of Async Drift Code -->
-    <script src="https://polyfill.io/v3/pollyfill.min.js?features=default"></script>
     <script>
         function initMap(){
             let map;
             var locations = {{locations|safe}};
+            var secondlocation = {{secondlocation|safe}};
             var infoWindow = [];
+            var infowindow2 = [];
 
             map = new google.maps.Map(document.getElementById("map"),{
-                center: {lat: locations[0].latitude, lng: locations[0].longitude},
-                zoom: 12
+                center: {lat: locations.latitude, lng: locations.longitude},
+                zoom: 10
             })
-
-            locations.forEach(function (location){
-                var marker = new google.maps.Marker({
-                position: {lat: location.latitude, lng: location.longitude},
+            
+            var marker = new google.maps.Marker({
+                position: {lat: locations.latitude, lng: locations.longitude},
                 map:map,
-                title: location.name
+                title: locations.name
                 })
 
-                var infowindow = new google.maps.InfoWindow({
-                    content: location.name
-                });
-            
-                infoWindow.push(infowindow);
-
-                marker.addListener('click', function(){
-                    infoWindow.forEach(function(iw){
-                        iw.close();
-                    });
-                    infowindow.open(map,marker);
-                });
-
+            var infowindow = new google.maps.InfoWindow({
+                content: locations.name
             });
+        
+            infoWindow.push(infowindow);
+
+            marker.addListener('click', function(){
+                infoWindow.forEach(function(iw){
+                    iw.close();
+                });
+                infowindow.open(map,marker);
+            });
+
+            var marker2 = new google.maps.Marker({
+            position: {lat: secondlocation.latitude, lng: secondlocation.longitude},
+            map:map,
+            title: secondlocation.name
+            })
+
+            var infowindow2 = new google.maps.InfoWindow({
+                content: secondlocation.name
+            });
+        
+            infoWindow2.push(infowindow2);
+
+            marker2.addListener('click', function(){
+                infoWindow2.forEach(function(iw){
+                    iw.close();
+                });
+                infowindow2.open(map,marker2);
+            });
+
 
         }
         window.initMap = initMap
@@ -256,8 +274,34 @@
                     <div class="pxp-single-property-section mt-4 mt-md-5">
                     <h3 style="text-decoration: underline;" class="mb-3">Explore the location</h3>  
                     <div id="map" style="height: 340px;"></div>
-                    <div class="pxp-single-property-section mt-4 mt-md-5">
+                    <div class="pxp-single-property-section mt-4 mt-md-5"></div>
+                    <h3 style="text-decoration: underline;" class="mb-3">Explore the distance to universities</h3>
+                    <form action="/show-distance" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <label style="font-size:medium" for="university">Choose a university: </label>
+                            <select style="width:fit-content; height:30px" name="university" id="university">
+                                {% for university in universities %}
+                                <option value="{{ university.id}}"  {% if selected_university == university.id %}selected{% endif %}>{{ university.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mt-4">
+                            <label style="font-size:medium" for="transportation">Choose a transportation method:</label>
+                            <select style="width:150px; height:30px" name="transportation" id="transportation">
+                                <option value="driving" {% if selected_transportation == 'driving' %}selected{% endif %}>driving</option>
+                                <option value="walking" {% if selected_transportation == 'walking' %}selected{% endif %}>walking</option>
+                            </select>
+                        </div>
+                        <br>
+                        <input class="mb-4" type="submit" value="Calculate distance">
+                    </form>
+                    {%if distance%}
+                    <div>
+                        <p style="color: black;font-size: 20px;">Distance: <span style="color: red;">{{distance}}</span></p>
+                        <p style="color: black;font-size: 20px;">Time: <span style="color:orange;">{{time}}</span></p>
                     </div>
+                    {%endif%}
                 </div>
                     <div class="col-lg-4">
                         <div class="pxp-single-property-section pxp-sp-agent-section mt-4 mt-md-5 mt-lg-0">
@@ -547,6 +591,7 @@
         <script src="/static/js/main.js?asdasd12"></script>
         <script async src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>
         <script src="/static/js/star.js"></script>
+        <script src="https://polyfill.io/v3/pollyfill.min.js?features=default"></script>
 </body>
 
 </html>

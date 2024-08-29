@@ -56,6 +56,18 @@ class City(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.name
+    
+class Univirsity(models.Model):
+    name = models.CharField(max_length=45) 
+    longitude = models.TextField(default="")
+    latitude = models.TextField(default="")
+    place_id = models.TextField(default="")
+    address = models.TextField(default="")
+    city = models.ForeignKey(City, related_name='universities', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def str(self):
+        return self.name
 
 
 class Appartment(models.Model):
