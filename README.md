@@ -1,6 +1,6 @@
 # Sknne Project 
 ##
-![Screenshot of Sknne Dashboard](./Screenshot 2024-08-29 031149.png)
+![Screenshot of Sknne Dashboard](./MALAK.png)
 
 
 ## Introduction  
