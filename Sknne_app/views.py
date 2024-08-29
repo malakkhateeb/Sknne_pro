@@ -13,14 +13,18 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from Sknne_pro.settings import EMAIL_HOST_USER
-import json 
+
 
 def home(request):
     if 'id' not in request.session :
-        return render(request, 'index.html')
+        context = {
+            "apartments":models.Appartment.objects.all
+        }
+        return render(request, 'index.html' , context)
     else:
         context = {
             'user':models.show_user(id = request.session['id']),
+            "apartments":models.Appartment.objects.all
         }
         return render(request, 'city.html', context)
     
@@ -381,6 +385,8 @@ def show_distance(request):
     )
     distance = result['rows'][0]['elements'][0]['distance']['text']
     time = result['rows'][0]['elements'][0]['duration']['text']
+    request.session['distance'] = distance
+    request.session['time'] = time
     context = {
         "room": appartment,
         "locations":locations[0],
@@ -391,7 +397,6 @@ def show_distance(request):
         'time': time,
         'selected_transportation': request.session['transportation'],
         'selected_university': int(request.session['university']),
-        
         'key': settings.GOOGLE_API_KEY,
     }
     return render(request , 'room.html' , context)

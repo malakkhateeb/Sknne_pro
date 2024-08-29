@@ -193,7 +193,6 @@ span {
                     </li>
                     <li class="list-inline-item pxp-is-last"><a id="h1" href="/about">About Us</a></li>
                     <li class="list-inline-item pxp-is-last"><a id="h1" href="/add_apartment">Join Us</a></li>
-
                     <li class="list-inline-item pxp-has-btns">
                         <div class="pxp-user-btns">
                             <a href="#" class="pxp-user-btns-signup pxp-signup-trigger">Sign Up</a>
@@ -336,8 +335,8 @@ span {
                     </form>
                     {%if distance%}
                     <div>
-                        <p style="color: black;font-size: 20px;">Distance: <span style="color: red;">{{distance}}</span></p>
-                        <p style="color: black;font-size: 20px;">Time: <span style="color:orange;">{{time}}</span></p>
+                        <p id="distance" style="color: black;font-size: 20px;">Distance: <span style="color: red;">{{request.session.distance}}</span></p>
+                        <p id="time" style="color: black;font-size: 20px;">Time: <span style="color:orange;">{{request.session.time}}</span></p>
                     </div>
                     {%endif%}
                 </div>
