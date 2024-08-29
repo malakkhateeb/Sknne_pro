@@ -160,6 +160,7 @@
             <p class="pxp-text-light">Browse our highest rated</p>
             <div class="pxp-props-carousel-right-container mt-4 mt-md-5">
                 <div class="owl-carousel pxp-props-carousel-right-stage">
+                    {% if request.session.id == None %}
                     {%for apartment in apartments|dictsortreversed:"rating"%}
                     <div>
                         <a href="#" class="pxp-prop-card-1 rounded-lg pxp-user-btns-login pxp-signin-trigger">
@@ -176,8 +177,27 @@
                         </a>
                     </div>
                     {%endfor%}
+                    {%else%}
+                    {%for apartment in apartments|dictsortreversed:"rating"%}
+                    <div>
+                        <a href="/room" class="pxp-prop-card-1 ">
+                            <div class="pxp-prop-card-1-fig pxp-cover"
+                            style="background-image: url('{{ apartment.image.url }}');"></div>
+                            <div class="pxp-prop-card-1-fig pxp-cover""></div>
+                                <div class=" pxp-prop-card-1-gradient pxp-animate"></div>
+                            <div class="pxp-prop-card-1-details">
+                                <div class="pxp-prop-card-1-details-title">{{apartment.title}} in {{apartment.city}}</div>
+                                <div class="pxp-prop-card-1-details-price">{{apartment.price}}$</div>
+                                <div class="pxp-prop-card-1-details-features text-uppercase">2 BD</div>
+                            </div>
+                            <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
+                        </a>
+                    </div>
+                    {%endfor%}
+                    {%endif%}
 
-                <a href="properties.html" class="pxp-primary-cta text-uppercase mt-4 mt-md-5 pxp-animate">Browse All</a>
+
+                <a href="#" class="pxp-primary-cta text-uppercase mt-4 mt-md-5 pxp-animate">Browse All</a>
             </div>
         </div>
 
@@ -188,7 +208,7 @@
 
             <div class="container">
                 <div class="pxp-services-container rounded-lg mt-4 mt-md-5">
-                    <a href="properties.html" class="pxp-services-item">
+                    <a href="#" class="pxp-services-item">
                         <div class="pxp-services-item-fig">
                             <img src="{% static 'images/service-icon-1.svg' %}" alt="Service Icon">
                         </div>
@@ -199,7 +219,7 @@
                         </div>
                       
                     </a>
-                    <a href="agents.html" class="pxp-services-item">
+                    <a href="#" class="pxp-services-item">
                         <div class="pxp-services-item-fig">
                             <img src="{% static 'images/service-icon-2.svg' %}" alt="...">
 
@@ -209,7 +229,7 @@
                             <div class="pxp-services-item-text-sub">Find an agent who knows<br>your market best</div>
                         </div>
                     </a>
-                    <a href="submit-property.html" class="pxp-services-item">
+                    <a href="#" class="pxp-services-item">
                         <div class="pxp-services-item-fig">
                             <img src="{% static 'images/service-icon-4.svg' %}" alt="...">
                         </div>
@@ -230,7 +250,7 @@
                             <h2 class="pxp-section-h2">Search Smarter, From Anywhere</h2>
                             <p class="pxp-text-light">Power your search with our Sknne real estate platform, for timely
                                 listings and a seamless experience.</p>
-                            <a href="properties.html"
+                            <a href="#"
                                 class="pxp-primary-cta text-uppercase mt-3 mt-md-5 pxp-animate"></a>
                         </div>
                     </div>

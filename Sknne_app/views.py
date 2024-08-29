@@ -26,7 +26,7 @@ def home(request):
             'user':models.show_user(id = request.session['id']),
             "apartments":models.Appartment.objects.all
         }
-        return render(request, 'city.html', context)
+        return render(request, 'index.html', context)
     
 
 def about_us(request):
