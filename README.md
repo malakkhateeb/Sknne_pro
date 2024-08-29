@@ -1,4 +1,7 @@
 # Sknne Project 
+##
+![Screenshot of Sknne Dashboard](./Screenshot 2024-08-29 031149.png)
+
 
 ## Introduction  
 Welcome to Sknne! We are excited to introduce you to a comprehensive real estate platform designed specifically for students seeking rental appartments across various cities in Palestine. Sknne simplifies the search process, providing users with access to a wide range of apartment listings and empowering owners to list their properties with ease. Our system offers a seamless user experience, making it easier than ever to find, evaluate, and secure student housing.
