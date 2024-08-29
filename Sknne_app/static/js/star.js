@@ -27,7 +27,7 @@ $(document).ready(function () {
         e.preventDefault(); // Prevents the form from submitting the traditional way
         $.ajax({
             type: 'POST',
-            url:'/submit-rating',
+            url: '/submit-rating',
             data: {
                 rating: $('input[name="rating"]:checked').val(),
                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
@@ -42,6 +42,99 @@ $(document).ready(function () {
         });
     });
 });
+// $(document).ready(function () {
+//     $('#form2').on('submit', function (e) {
+//         e.preventDefault(); // Prevents the form from submitting the traditional way
+//         $.ajax({
+//             type: 'POST',
+//             url: '/show-distance',
+//             data: {
+//                 university: $('#university').val(),
+//                 transportation: $('#transportation').val(),
+//                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+//             },
+//             dataType: 'json', // Expect JSON response
+//             success: function (response) {
+//                 '<%Session["time"]'= response.time,
+//                 '<%Session["distance"]'= response.distance,
+//             },
+//             error: function (xhr, status, error) {
+//                 console.error('Submission failed:', status, error);
+//                 alert('There was an error submitting the form.');
+//             }
+//         });
+//     });
+// });
+
+// $(document).ready(function () {
+//     $('#form2').on('submit', function (e) {
+//         e.preventDefault(); // Prevents the form from submitting the traditional way
+
+//         $.ajax({
+//             type: 'POST',
+//             url: '/show-distance',
+//             data: {
+//                 university: $('#university').val(),
+//                 transportation: $('#transportation').val(),
+//                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+//             },
+//             success: function(response) {
+//                 // Assuming 'response' contains the JSON data returned from the server
+//                 console.log('Server response:', response);
+
+//                 // Update the HTML content with the new data
+//                 $('#distance').text(response.distance);
+//                 $('#time').text(response.time);
+//             },
+//             error: function(xhr, status, error) {
+//                 // Handle errors
+//                 console.error('Submission failed: ', status, error);
+//                 alert('There was an error submitting the form.');
+//             }
+//         });
+//     });
+// });
+// $(document).ready(function () {
+//     $('#form2').on('submit', function (e) {
+//         e.preventDefault(); // Prevents the form from submitting the traditional way
+
+//         $.ajax({
+//             type: 'POST',
+//             url: '/show-distance',
+//             data: {
+//                 university: $('#university').val(),
+//                 transportation: $('#transportation').val(),
+//                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+//             },
+//             success: function(response) {
+//                 // Handle the response from the server
+//                 // For example, display a message or redirect
+//                 alert('Form submitted successfully!');
+//                 // You can also redirect if needed
+//                 // window.location.href = '/success-page';
+//             },
+//             error: function(xhr, status, error) {
+//                 // Handle errors
+//                 console.error('Submission failed: ', status, error);
+//                 alert('There was an error submitting the form.');
+//             }
+//         });
+//     });
+// });
+// $(document).ready(function () {
+//     $('#form2').on('submit', function (e) {
+//         e.preventDefault(); // Prevents the form from submitting the traditional way
+//         $.ajax({
+//             type: 'POST',
+//             url:'/show-distance',
+//             data: {
+//                 university: $('#university').val(),
+//                 transportation : $("#transportation").val(),
+//                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+//             },// Redirect after successful submission
+//         });
+//     });
+// });
 
 
 // // Example usage:

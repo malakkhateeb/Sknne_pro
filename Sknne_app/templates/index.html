@@ -160,86 +160,22 @@
             <p class="pxp-text-light">Browse our highest rated</p>
             <div class="pxp-props-carousel-right-container mt-4 mt-md-5">
                 <div class="owl-carousel pxp-props-carousel-right-stage">
+                    {%for apartment in apartments|dictsortreversed:"rating"%}
                     <div>
-                        <a href="single-property.html" class="pxp-prop-card-1 rounded-lg">
-                            <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static "images/prop-1-1-gallery.jpg" %}');"></div>
+                        <a href="#" class="pxp-prop-card-1 rounded-lg pxp-user-btns-login pxp-signin-trigger">
+                            <div class="pxp-prop-card-1-fig pxp-cover"
+                            style="background-image: url('{{ apartment.image.url }}');"></div>
                             <div class="pxp-prop-card-1-fig pxp-cover""></div>
                                 <div class=" pxp-prop-card-1-gradient pxp-animate"></div>
                             <div class="pxp-prop-card-1-details">
-                                <div class="pxp-prop-card-1-details-title">Alola in Nablus</div>
-                                <div class="pxp-prop-card-1-details-price">$100</div>
+                                <div class="pxp-prop-card-1-details-title">{{apartment.title}} in {{apartment.city}}</div>
+                                <div class="pxp-prop-card-1-details-price">{{apartment.price}}$</div>
                                 <div class="pxp-prop-card-1-details-features text-uppercase">2 BD</div>
                             </div>
                             <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
                         </a>
                     </div>
-
-                    <div>
-                        <a href="single-property.html" class="pxp-prop-card-1 rounded-lg">
-                            <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static "images/prop-8-1-gallery.jpg" %}');"></div>
-
-                            <div class="pxp-prop-card-1-gradient pxp-animate"></div>
-                            <div class="pxp-prop-card-1-details">
-                                <div class="pxp-prop-card-1-details-title">Alamal in Ramallah</div>
-                                <div class="pxp-prop-card-1-details-price">Price</div>
-                                <div class="pxp-prop-card-1-details-features text-uppercase">1 BD</div>
-                            </div>
-                            <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
-                        </a>
-                    </div>
-
-                    <div>
-                        <a href="single-property.html" class="pxp-prop-card-1 rounded-lg">
-                            <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static "images/prop-3-1-gallery.jpg" %}');"></div>
-                            <div class="pxp-prop-card-1-gradient pxp-animate"></div>
-                            <div class="pxp-prop-card-1-details">
-                                <div class="pxp-prop-card-1-details-title">bulding in town</div>
-                                <div class="pxp-prop-card-1-details-price">Price</div>
-                                <div class="pxp-prop-card-1-details-features text-uppercase">2 BD</div>
-                            </div>
-                            <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
-                        </a>
-                    </div>
-
-                    <div>
-                        <a href="single-property.html" class="pxp-prop-card-1 rounded-lg">
-                            <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static "images/prop-7-1-big.jpg" %}');"></div>
-                            <div class="pxp-prop-card-1-gradient pxp-animate"></div>
-                            <div class="pxp-prop-card-1-details">
-                                <div class="pxp-prop-card-1-details-title">bulding in town</div>
-                                <div class="pxp-prop-card-1-details-price">Price</div>
-                                <div class="pxp-prop-card-1-details-features text-uppercase">2 BD</div>
-                            </div>
-                            <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
-                        </a>
-                    </div>
-
-                    <div>
-                        <a href="single-property.html" class="pxp-prop-card-1 rounded-lg">
-                            <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static "images/prop-8-1-gallery.jpg" %}');"></div>
-                            <div class="pxp-prop-card-1-gradient pxp-animate"></div>
-                            <div class="pxp-prop-card-1-details">
-                                <div class="pxp-prop-card-1-details-title">bulding in town</div>
-                                <div class="pxp-prop-card-1-details-price">Price</div>
-                                <div class="pxp-prop-card-1-details-features text-uppercase">2 BD</div>
-                            </div>
-                            <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
-                        </a>
-                    </div>
-
-                    <div>
-                        <a href="single-property.html" class="pxp-prop-card-1 rounded-lg">
-                            <div class="pxp-prop-card-1-fig pxp-cover" style="background-image: url('{% static "images/prop-9-1-gallery.jpg" %}');"></div>
-                            <div class="pxp-prop-card-1-gradient pxp-animate"></div>
-                            <div class="pxp-prop-card-1-details">
-                                <div class="pxp-prop-card-1-details-title">bulding in town</div>
-                                <div class="pxp-prop-card-1-details-price">Price</div>
-                                <div class="pxp-prop-card-1-details-features text-uppercase">2 BD</div>
-                            </div>
-                            <div class="pxp-prop-card-1-details-cta text-uppercase">View Details</div>
-                        </a>
-                    </div>
-                </div>
+                    {%endfor%}
 
                 <a href="properties.html" class="pxp-primary-cta text-uppercase mt-4 mt-md-5 pxp-animate">Browse All</a>
             </div>

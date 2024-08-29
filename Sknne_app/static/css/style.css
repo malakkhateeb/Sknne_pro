@@ -2166,7 +2166,8 @@ a.pxp-areas-carousel-item:hover .pxp-areas-carousel-item-fig {
  */
 
 .pxp-props-carousel-right {
-    padding-left: calc((100% - 1140px) / 2 + 15px);
+    padding-left: 50px !important;
+    /* padding-left: calc((100% - 1140px) / 2 + 15px); */
     padding-right: 0;
 }
 .pxp-props-carousel-right.pxp-half-bg {

@@ -138,5 +138,5 @@ def estimation( user , appartment ):
 def vote(id , rating):
     room = show_room(id=id)
     room.total_votes = (int(room.total_votes)+1)
-    room.rating = ((((int(room.rating)/10) + (int(rating))/10)/(int(room.total_votes))))*100
+    room.rating = ((((int(room.rating)/100) + (int(rating))/10)/(int(room.total_votes))))*100
     return room.save()
